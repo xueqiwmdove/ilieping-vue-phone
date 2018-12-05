@@ -1,0 +1,372 @@
+html{font-family: "微软雅黑";}
+body{width: 100%;height: 100%;}
+.f_l{float: left; display: inline-block;}
+.f_r{float: right; display: inline-block;}
+.login_div{padding: 0 0.2rem;}
+.header_div{margin-top:2rem;text-align: center;}
+.header_div img{width:3.6rem; height: 1.2rem;}
+
+.form_div{
+	width: 100%;
+	display: block;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	clear: both;
+	border-bottom: 1px solid #CCC;
+}
+.icon_img{
+	width: 0.36rem;
+    display: inline-block;
+    float: left;
+    margin: 0.4rem 0.2rem 0 0;
+}
+.form_div .input_txt{
+	display: block;
+/*    width: 100%;*/
+    height: 0.46rem;
+    line-height:0.46rem;
+    padding-top: 0.4rem;
+    font-size: 0.32rem;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form_div .btn_sms{
+	cursor: pointer;
+	border: none;
+	color: #fff;
+	font-size: 0.36rem;
+    width: 2.2rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    background: rgba(249, 87, 20, 0.8);/*#F95714*/ 
+    background:#F95714;/*CSS Hack,只能对ie9以下浏览器ie6,ie7,ie8有效，否侧ie10,FF,Cherome会失去透明效果*/  
+    color: #fff;
+    border-radius: 0.35rem;
+    text-align: center;
+    margin-top: 0.3rem;
+    filter:Alpha(opacity=80);  
+    opacity:0.8
+}
+.btn_div{width: 100%;margin: 0.1rem auto auto;}
+.btn_div .btn{width: 100%; line-height: 0.9rem; border: none; border-radius: 0.5rem; font-size: 0.36rem; text-align: center; color: #fff;
+  background: #FF8350; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #FF8350 , #F95714); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #FF8350, #F95714); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #FF8350, #F95714); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #FF8350 , #F95714); /* Standard syntax */
+}
+/* 合同 */
+.contract_div{padding:0 0.2rem; font-family: 'PingFangSC-Regular';position: relative;z-index: 0;}
+.contract_div .contract_title{
+	margin-top: 10px;
+	font-size: 0.4rem;
+	line-height: 0.46rem;
+	color: #303030;
+	text-align: center;
+}
+.contract_div .contract_con{
+    z-index: 0;
+    margin-bottom: 1.6rem;
+}
+.contract_div .contract_con .contract_con_title{
+	font-size: 0.36rem;
+	color: #333;
+	margin-top: 0.2rem;
+}
+.contract_div .contract_con .contract_con_titleS{
+	font-size: 0.30rem;
+	color: #333;
+	margin-top: 0.16rem;
+}
+.contract_div .contract_con .contract_con_titleC{
+	font-size: 0.28rem;
+	color: #666;
+	margin-top: 0.1rem;
+}
+.btn_div_f{
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    height: 1.2rem;
+    background: #fff;
+    line-height: 0.8rem;
+    display: block;
+    z-index: 10;
+    left: 5%;
+}
+/* 弹出层 toset */
+.model_bg{
+	top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 10;
+    opacity: 0.2;
+    display: none;
+}
+.toset{
+    min-width: 100px;
+    background-color: #000;
+    filter: alpha(opacity=50);
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    border: none;
+    font-size: 0.26rem;
+    top: 50%;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    width: 80%;
+    margin-left: -40%;
+    margin-top: -10%;
+    padding: 0.6rem 0;
+    z-index: 100;
+    border-radius: 4px;
+    display: none;
+}
+.model_div_none{}
+.model_bg_none{
+	top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter: alpha(opacity=70);
+    background-color: rgba(0,0,0,.7);
+    z-index: 20;
+    opacity: 0.7;
+}
+.model_div{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+    -webkit-user-select: none;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: .2s;
+    transition: .2s;
+    
+    min-width: 100px;
+    border: none;
+    font-size: 0.26rem;
+    bottom: 26%;
+    text-align: center;
+    width: 80%;
+    height: 7.5rem;
+    z-index: 100;
+}
+.model_bg_f{
+	background: #fff;
+	border-radius:0.1rem;
+	padding: 0.4rem 0.2rem;
+}
+.model_div .model_title{
+	font-size: 17px;
+	color: #333333;
+	letter-spacing: -0.41px;
+	text-align: center;
+}
+.model_div .model_con{
+	margin-top: 0.2rem;
+}
+.model_div .model_con .company_div{
+	letter-spacing: -0.34px;
+	text-align: left;
+}
+.model_div .model_con .company_div .span_company{
+	color: #303030;
+	font-weight:bold;
+	font-size: 0.32rem;
+}
+.model_div .model_img_div img{
+    width: 0.36rem;
+    height: 0.36rem;
+    display: inline-block;
+}
+.model_con .model_name{
+font-size: 24px;
+color: #000000;
+letter-spacing: -0.58px;
+    padding: 0.2rem 0;
+}
+.model_con .model_img_div{
+font-size: 12px;
+color: #666666;
+letter-spacing: -0.29px;
+text-align: center;
+    padding: 0.2rem 0;
+}
+.model_con .model_txt{
+font-size: 12px;
+color: #999999;
+letter-spacing: 0;
+line-height: 18px;
+margin-top: 0.3rem;
+}
+.model_btn_div .btn{
+	width: 100%;
+    line-height: 0.9rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.36rem;
+    text-align: center;
+    color: #fff;
+    background: #FF8350;
+    background: -webkit-linear-gradient(left, #FF8350 , #F95714);
+    background: -o-linear-gradient(right, #FF8350, #F95714);
+    background: -moz-linear-gradient(right, #FF8350, #F95714);
+    background: linear-gradient(to right, #FF8350 , #F95714);
+}
+.delete_div{
+	
+}
+.delete_div img{
+	width: 0.84rem;
+	height: 1.06rem;
+}
+.authentication_div{
+    /*padding: 0.2rem 0.26rem;*/
+}
+.err_div{
+    line-height: 0.6rem;
+    height: 0.6rem;	
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+    text-align: left;
+}
+.err_div img{
+    width: 0.36rem;
+    height: 0.36rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.err_div #err_span{
+    font-size: 12px;
+    color: #F95714;
+    text-align: left;
+    vertical-align: middle;
+}
+.authentication_div .form_div_a{
+    margin-bottom: 0.2rem;
+    height: 1rem;
+    line-height: 1rem;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+.authentication_div .form_div_a .form_lable{
+text-align: left;
+    vertical-align: middle;
+    float: left;
+    font-size: 14px;
+    color: #606266;
+    line-height: 40px;
+    padding: 0 12px 0 0;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 30%;
+}
+.authentication_div .form_div_a .form_lable span{
+	color: #F95714;
+}
+.authentication_div .form_div_a .form_input{
+	line-height: 40px;
+    font-size: 14px;
+    float: left;
+    display: inline-block;
+}
+.arr_txt{
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: -0.29px;
+    text-align: left;
+    padding: 0.2rem 0;
+    width: 100%;
+    display: block;
+}
+.arr_txt .arr_txt_img{
+	float: left;
+	display: inline-block;
+}
+.arr_txt img{
+    width: 0.3rem;
+    height: 0.3rem;
+    display: inline-block;
+}
+.arr_txt .arr_txt_span{
+ padding-left: 0.5rem;
+}
+.file_div{
+    height: 3rem;
+    /*width: 100%;*/
+    display: block;
+}
+.file_div .file_ul{
+	
+}
+.file_div .file_li{
+  /*width: 50%;*/
+  float: left;
+  display: inline-block;	
+}
+.file_txt{
+font-family: PingFangSC-Regular;
+font-size: 12px;
+color: #666666;
+letter-spacing: 0.12px;
+text-align: center;
+}
+.txt_c{
+ margin-top: -0.12rem;
+font-size: 16px;
+color: #F95714;
+letter-spacing: -0.39px;
+text-align: center;
+    padding: 1rem 0;
+}
+.model_btn{
+    border: none;
+    color: #fff;
+    font-size: 0.36rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    background: rgba(249, 87, 20, 0.8);
+    border-radius: 0.35rem;
+    text-align: center;
+	width: 100%;
+	margin-top: 0.7rem;
+}
+/* 图片上传 */
+.file_input{
+    height: 2rem;
+    margin: 0.2rem 0;
+}
+#test-image-preview {
+　　border: 1px solid #ccc;
+   width: 100%;
+   height: 200px;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center center;
+}
+
+.error_div{
+	text-align: center;
+}
+.error_div .error_span{
+	font-size: 0.3rem;
+}
+
+#txt_time{
+	display: none;
+}
+.click_btn{opacity: 0.6;}

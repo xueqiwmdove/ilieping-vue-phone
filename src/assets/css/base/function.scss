@@ -1,0 +1,39 @@
+.fl {
+  float: left
+}
+
+.fr {
+  float: right
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.ui-loader-default {
+  display: none
+}
+
+.ui-mobile-viewport {
+  border: none
+}
+
+.ui-page {
+  padding: 0;
+  margin: 0;
+  outline: 0
+}
+
+
+.frm_bg {
+  width: 7.5rem;
+  margin: 0 auto;
+}
