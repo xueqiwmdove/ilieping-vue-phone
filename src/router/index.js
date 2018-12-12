@@ -7,6 +7,9 @@ import Invalid from '@/components/Invalid'
 import leaderTest from '@/components/leaderTest'
 import signature from '@/components/signature' //手动签名
 
+import checkIn from '@/components/Interview/checkIn' //面试签到
+import candidate from '@/components/Interview/candidate' //候选人信息
+
 Vue.use(Router)
 
 export default new Router({
@@ -40,6 +43,16 @@ export default new Router({
       path: '/signature',
       name: 'signature',
       component: signature
+    },
+    {
+      path: '/checkIn',
+      name: 'checkIn',
+      component: checkIn
+    },
+    {
+      path: '/candidate',
+      name: 'candidate',
+      component: candidate
     }
   ]
 })
