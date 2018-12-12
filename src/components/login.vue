@@ -144,7 +144,7 @@ export default {
 			});
       that.axios({
   			method:'post',
-  			url:api.getcode+'/'+that.dataPhone+'/44',
+  			url:api.getcode+'/'+that.dataPhone+'/31',
   			headers:headers("application/x-www-form-urlencoded"),
 //			data:"mobile="+that.dataPhone,
   			cache:false
