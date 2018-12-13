@@ -6,6 +6,7 @@ import authentication from '@/components/authentication'
 import Invalid from '@/components/Invalid'
 import leaderTest from '@/components/leaderTest'
 import signature from '@/components/signature' //手动签名
+import Agreement from '@/components/Agreement' //移动原型手机用户协议
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/signature',
       name: 'signature',
       component: signature
+    },
+    {
+      path: '/Agreement',
+      name: 'Agreement',
+      component: Agreement
     }
   ]
 })
