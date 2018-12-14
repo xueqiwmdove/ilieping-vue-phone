@@ -14,8 +14,8 @@
 						<img class="icon_img" src="../assets/img/ic_password.svg" />
 						<input type="tel" style="width:70%;" autocomplete="off" v-model="txt_code" maxlength="6" minlength='6' class="input_txt" id="input_code" placeholder="请输入短信验证码" />
 					</div>
-					<div class="f_r btn_sms" @click="get_code" v-if="codeState" :disabled="button_phone_dis">获取验证码</div>
-          <div class="f_r btn_sms click_btn" disabled="true" v-if="codeState2">{{timeNum}}s后重发</div>
+					<div class="f_r btn_sms" @click="get_code" v-show="codeState" :disabled="button_phone_dis">获取验证码</div>
+          <div class="f_r btn_sms click_btn" disabled="true" v-show="codeState2">{{timeNum}}s后重发</div>
 				</div>
 			</form>
 			<div class="btn_div">
@@ -144,7 +144,7 @@ export default {
 			});
       that.axios({
   			method:'post',
-  			url:api.getcode+'/'+that.dataPhone+'/44',
+  			url:api.getcode+'/'+that.dataPhone+'/31',
   			headers:headers("application/x-www-form-urlencoded"),
 //			data:"mobile="+that.dataPhone,
   			cache:false

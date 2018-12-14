@@ -6,6 +6,7 @@ import authentication from '@/components/authentication'
 import Invalid from '@/components/Invalid'
 import leaderTest from '@/components/leaderTest'
 import signature from '@/components/signature' //手动签名
+import Agreement from '@/components/Agreement' //移动原型手机用户协议
 
 import checkIn from '@/components/Interview/checkIn' //面试签到
 import candidate from '@/components/Interview/candidate' //候选人信息
@@ -43,6 +44,11 @@ export default new Router({
       path: '/signature',
       name: 'signature',
       component: signature
+    },
+    {
+      path: '/Agreement',
+      name: 'Agreement',
+      component: Agreement
     },
     {
       path: '/checkIn',
