@@ -21,8 +21,8 @@
     <canvas id="canvas" height="500">Canvas画板</canvas>
     <!--<img v-bind:src="url" alt="">-->
     <div class="btn_footer">
-		  <button class="btn_clear" type="" v-on:click="clear">清除</button>
-		  <button class="btn_save" v-on:click="save">保存</button>
+		  <button class="btn_clear" type="" v-on:click="clear">清除重签</button>
+		  <button class="btn_save" v-on:click="save">确认签署</button>
     </div>
   </div>
 </template>
@@ -163,7 +163,7 @@ export default {
 	ul { list-style-type: none; padding: 0; } 
 	li { display: inline-block; margin: 0 10px; } 
 	a { color: #42b983; } 
-	#canvas {width: 90%; background: #F9F9F9; cursor: default; border: 1px dashed #ddd; border-radius: 0.1rem;margin:0.2rem 4%; } 
+	#canvas {width: 90%; background:url(../assets/img/s.png) left top no-repeat #F9F9F9; cursor: default; border: 1px dashed #ddd; border-radius: 0.1rem;margin:0.2rem 4%; } 
 	#keyword-box { margin: 10px 0; } 
 	.btn_footer{
     position: fixed;
