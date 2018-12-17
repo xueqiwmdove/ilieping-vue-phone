@@ -8,6 +8,10 @@ import leaderTest from '@/components/leaderTest'
 import signature from '@/components/signature' //手动签名
 import Agreement from '@/components/Agreement' //移动原型手机用户协议
 
+import checkIn from '@/components/Interview/checkIn' //面试签到
+import candidate from '@/components/Interview/candidate' //候选人信息
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -46,7 +50,18 @@ export default new Router({
       path: '/Agreement',
       name: 'Agreement',
       component: Agreement
+    },
+    {
+      path: '/checkIn',
+      name: 'checkIn',
+      component: checkIn
+    },
+    {
+      path: '/candidate',
+      name: 'candidate',
+      component: candidate
     }
+
   ]
 })
 
