@@ -11,6 +11,7 @@ import Agreement from '@/components/Agreement' //移动原型手机用户协议
 import checkIn from '@/components/Interview/checkIn' //面试签到
 import candidate from '@/components/Interview/candidate' //候选人信息
 
+
 Vue.use(Router)
 
 export default new Router({
