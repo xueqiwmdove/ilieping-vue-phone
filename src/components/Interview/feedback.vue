@@ -2,20 +2,40 @@
   <div class="checkIn">
    <div class="checkIn_div">
 		 <div class="checkIn_header">
-			<div class="f_l">您好，李乾坤</div>
-			<div class="f_r">预览简历</div>
+			 <i class="people"></i>
+			李乾坤
 		 </div>
 		 <div class="checkCon">
+			 <div class="subheading">
+				 <div class="f_l">面试信息</div>
+				 <div class="f_r">预览简历</div>
+			 </div>
+			<div class="title_div">
+				<div class="title_l">面试时间：</div>
+				<div class="title_r">2018/11/09(星期一) 10：00</div>
+			</div> 
 			<div class="title_div">
 				<div class="title_l">面试岗位：</div>
 				<div class="title_r">测试工程师</div>
-			</div> 
+			</div>
 			<div class="title_div">
 				<div class="title_l">候选人负责人：</div>
-				<div class="title_r">李乾坤</div>
+				<div class="title_r">李三三</div>
+			</div>
+			<div class="subheading">
+				<div class="f_l">面试登记表</div>
+				<div class="f_r">预览表格</div>
+			</div>
+			<div class="title_div">
+				<div class="title_l">面试登记表：</div>
+				<div class="title_r">已填写</div>
+			</div>
+			<div class="subheading">
+				<div class="f_l">面试反馈</div>
 			</div>
 			<div class="tabs_div">
 				<div class="tabs_l" :class="{'IsActive': isA}" @click="tabsA">同意面试</div>
+				
 				<div class="tabs_r" :class="{'IsActiveB': isB}" @click="tabsB">不同意面试</div>
 			</div>
 			<div class="textarea_div">
@@ -23,7 +43,7 @@
 			</div>
 		 </div>
 		<div class="btn_div">
-			<button class="btn">提交反馈</button>
+			<button class="btn">提交评价反馈</button>
 		</div>
 		</div>
   </div>
@@ -71,8 +91,8 @@ export default {
 <style scoped>
 .checkIn{background: #F5F5F5;font-family:PingFangSC-Semibold;}	
 .checkIn .checkIn_div{}	
-.checkIn .checkIn_div .checkIn_header{ height: 1rem; line-height: 1rem; text-align: left; padding-left: 0.2rem;font-size:0.3rem;font-weight:600;color:#303030;}
-.checkIn .checkIn_div .checkIn_header .f_r{
+.checkIn .checkIn_div .checkIn_header{ height: 1rem; line-height: 1rem; text-align: center; padding-left: 0.2rem;font-size:0.3rem;font-weight:600;color:#303030;}
+.checkIn .checkIn_div .checkIn_header .f_r,.checkCon .subheading .f_r{
     font-size: 14px;
     font-weight: 400;
     color: rgba(249,87,20,1);
@@ -86,6 +106,8 @@ export default {
     border-radius: 0.25rem;
 	cursor: pointer;
 }
+.checkCon .subheading{height: 1rem; line-height: 1rem; text-align: left; padding-left: 0.2rem;font-size:0.28rem;font-weight:600;color:#303030;}
+
 .checkIn .checkIn_div .checkCon{background: #fff; padding: 0 0.3rem;}
 .checkCon .title_div{width: 100%; height: 0.8rem; line-height: 0.8rem;font-size: 0.28rem; text-align: left;}
 .checkCon .title_div .title_l{ float: left; display: inline-block; width: 30%; color: #666;}
@@ -98,4 +120,7 @@ export default {
 .IsActive{background: #F95714; color: #fff; background-color: #F95714; border-radius: 0.3rem 0 0 0.3rem;}
 .IsActiveB{background: #F95714;color: #fff;background-color: #F95714; border-radius: 0 0.3rem 0.3rem 0;}
 .btn_div{background: #f5f5f5; padding: 0.1rem 0.3rem;width: auto; margin: 0;}
+
+.people{width: 0.3rem; height: 0.4rem; display: inline-block; background: url(../../assets/img/Interview/ic_people.png) no-repeat; background-size: 100%;}
+
 </style>
