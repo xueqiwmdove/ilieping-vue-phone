@@ -34,9 +34,10 @@
 				<div class="f_l">面试反馈</div>
 			</div>
 			<div class="tabs_div">
-				<div class="tabs_l" :class="{'IsActive': isA}" @click="tabsA">同意面试</div>
-				
-				<div class="tabs_r" :class="{'IsActiveB': isB}" @click="tabsB">不同意面试</div>
+				<div class="tabs_l" :class="{'IsActive': isA}" @click="tabsA">很满意</div>
+				<div class="tabs_2" :class="{'IsActive2': isA2}" @click="tabsA2">满意</div>
+				<div class="tabs_3" :class="{'IsActive3': isA3}" @click="tabsA3">一般</div>
+				<div class="tabs_r" :class="{'IsActiveB': isB}" @click="tabsB">不满意</div>
 			</div>
 			<div class="textarea_div">
 				<textarea placeholder="例：如同意则填写您方便面试的时间让HR好安 排面试，如不同意则填写拒绝原因"></textarea> 
@@ -59,6 +60,8 @@ export default {
   data () {
     return {
      isA: true,  //当isA改变时，将更新class
+	 isA2: false,
+	 isA3: false,
      isB: false
     }
   },
@@ -72,11 +75,29 @@ export default {
 		tabsA(){
 			let that=this;
 			that.isA=true;
+			that.isA2=false;
+			that.isA3=false;
 			that.isB=false;
+		},
+		tabsA2(){
+		let that=this;
+		that.isA=false;
+		that.isA2=true;
+		that.isA3=false;
+		that.isB=false;	
+		},
+		tabsA3(){
+		let that=this;
+		that.isA=false;
+		that.isA2=false;
+		that.isA3=true;
+		that.isB=false;	
 		},
 		tabsB(){
 			let that=this;
 			that.isA=false;
+			that.isA2=false;
+			that.isA3=false;
 			that.isB=true;
 		},
   },
@@ -113,11 +134,16 @@ export default {
 .checkCon .title_div .title_l{ float: left; display: inline-block; width: 30%; color: #666;}
 .checkCon .title_div .title_r{ float: left; display: inline-block; width: 70%; color: #000;}
 .tabs_div{width: 100%; height: 0.6rem; line-height: 0.6rem;font-size: 0.3rem; border-radius:0.3rem;margin: 0.2rem 0; cursor: pointer; border:1px solid rgba(229,229,229,1);}
-.tabs_div .tabs_l{width: 50%; float: left; display: inline-block;}
-.tabs_div .tabs_r{width: 50%;float: left; display: inline-block;}
+.tabs_div .tabs_l{width: 25%; float: left; display: inline-block;}
+.tabs_div .tabs_2{width: 25%; float: left; display: inline-block;}
+.tabs_div .tabs_3{width: 25%; float: left; display: inline-block;}
+.tabs_div .tabs_r{width: 25%;float: left; display: inline-block;}
+
 .textarea_div{width: 100%; font-size: 0.28rem;}
 .textarea_div textarea{width: 90%;resize:none;height: 3rem; padding: 0.2rem; border-radius: 0.1rem; margin-bottom: 0.2rem;border:1px solid rgba(229,229,229,1);}
 .IsActive{background: #F95714; color: #fff; background-color: #F95714; border-radius: 0.3rem 0 0 0.3rem;}
+.IsActive2{background: #F95714; color: #fff; background-color: #F95714;}
+.IsActive3{background: #F95714; color: #fff; background-color: #F95714;}
 .IsActiveB{background: #F95714;color: #fff;background-color: #F95714; border-radius: 0 0.3rem 0.3rem 0;}
 .btn_div{background: #f5f5f5; padding: 0.1rem 0.3rem;width: auto; margin: 0;}
 

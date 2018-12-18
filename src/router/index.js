@@ -10,7 +10,8 @@ import Agreement from '@/components/Agreement' //移动原型手机用户协议
 
 import checkIn from '@/components/Interview/checkIn' //面试签到
 import candidate from '@/components/Interview/candidate' //候选人信息
-import feedback from '@/components/Interview/feedback' //候选人信息
+import feedback from '@/components/Interview/feedback' //面试反馈
+import registration from '@/components/Interview/registration' //面试登录表
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ export default new Router({
 			path: '/feedback',
 			name: 'feedback',
 			component: feedback
+		},
+		{
+			path: '/registration',
+			name: 'registration',
+			component: registration
 		}
   ]
 })
