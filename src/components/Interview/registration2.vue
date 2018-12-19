@@ -2,140 +2,116 @@
  <div class="registration">
    <div>	 
 	 <ul class="steps">
-		<li class="active">个人信息</li>
-		<li >个人经历</li>
+		<li>个人信息</li>
+		<li class="active">个人经历</li>
 		<li>其他信息</li>
     </ul>
    </div>
    <div class="infor">
 	   <div class="inforImg"></div>
-	   <div class="inforTxt">个人信息</div>
+	   <div class="inforTxt">工作经历(由近至远)</div>
    </div>
    <div class="infor_form">
 	   <div class="form_div">
-		  <div class="form_title"><i>*</i>姓名</div> 
+		  <div class="form_title"><i>*</i>公司名称</div> 
 		  <div class="form_input">
 			  <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 		  </div>
 	   </div>
 	   <div class="form_div">
-	   <div class="form_title"><i>*</i>姓别</div> 
-	   <div class="form_input">
-			 <el-radio v-model="radio" label="1">男</el-radio>
-       <el-radio v-model="radio" label="2">女</el-radio>
-	   </div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title"><i>*</i>出生日期</div> 
+	   <div class="form_title"><i>*</i>任职开始时间</div> 
 	   <div class="form_input">
 	   	<input type="number" class="input_txt" @click="setDate" onfocus="this.blur();" :placeholder="user.birthday?user.birthday:'请选择您的生日'" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
+		 <div class="form_div">
+		 <div class="form_title"><i>*</i>任职结束时间</div> 
+		 <div class="form_input">
+		 <input type="number" class="input_txt" @click="setDate" onfocus="this.blur();" :placeholder="user.birthday?user.birthday:'请选择您的生日'" />
+		 </div>
+		 <div class="icon_r"></div>
+		 </div>
 	   <div class="form_div">
-	   <div class="form_title"><i>*</i>邮箱</div> 
+	   <div class="form_title"><i>*</i>任职岗位</div> 
 	   <div class="form_input">
 	   	<input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   </div>
 	   <div class="form_div">
-	   <div class="form_title"><i>*</i>手机号码</div> 
+	   <div class="form_title">薪资</div> 
 	   <div class="form_input">
 	   	<input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   </div>
 	   <div class="form_div">
-	   <div class="form_title"><i>*</i>应聘岗位</div> 
+	   <div class="form_title">证明人</div> 
 	   <div class="form_input">
 	   	<input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   </div>
 	   <div class="form_div">
-	   <div class="form_title">所在行业</div> 
+	   <div class="form_title">联系方式</div> 
 	   <div class="form_input">
 	    <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
+		 <div class="textarea_div">
+			 <div class="text_title">离职原因</div>
+			 <textarea placeholder="请在些输入离职原因(限1000字)" maxlength="1000"></textarea>	   
+		 </div>
+		 
+		 </div>
+		 
+		 <div class="infor">
+		 	<div class="inforImg"></div>
+		 	<div class="inforTxt">教育经历</div>
+		 </div>
+		 <div class="infor_form">
 	   <div class="form_div">
-	   <div class="form_title">期望行业</div> 
+	   <div class="form_title"><i>*</i>学校名称</div> 
 	   <div class="form_input">
 	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
-	   <div class="form_title">工作城市</div> 
+	   <div class="form_title"><i>*</i>就读开始时间</div> 
+	   <div class="form_input">
+	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   </div>
+	   </div>
+	   <div class="form_div">
+	   <div class="form_title"><i>*</i>就读结束时间</div> 
+	   <div class="form_input">
+	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   </div>
+	   </div>
+	   <div class="form_div">
+	   <div class="form_title">就读专业</div> 
 	   <div class="form_input">
 	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
-	   <div class="form_title">当前薪酬</div> 
+	   <div class="form_title">学历</div> 
 	   <div class="form_input">
 	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   </div>
 	   <div class="form_div">
-	   <div class="form_title">期望薪酬</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">目前工作状态</div> 
+	   <div class="form_title">是否全日制</div> 
 	   <div class="form_input">
 	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
-	   <div class="form_div">
-	   <div class="form_title">最快到岗时间</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">政治面貌</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   <div class="icon_r"></div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">籍贯</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">现住地址</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">婚姻状况</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   <div class="icon_r"></div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">生育状况</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   <div class="icon_r"></div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">身份证号码</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
-	   </div>
-	   
+		 <div class="textarea_div">
+			 <div class="text_title">其他</div>
+			 <textarea placeholder="请在些输入其他说明(限1000字)" maxlength="1000"></textarea>	   
+		 </div>
    </div>
    <div class="btn_div">
    	<button class="btn" id="login_btn" >下一步</button>
@@ -247,14 +223,14 @@ export default {
   box-shadow:none; 
 }
 .infor{height: 1rem;background: #F5F5F5;}
-.infor .inforImg{width: 0.4rem; height: 0.4rem; background: url(../../assets/img/Interview/jibenxinxi.png) no-repeat; display: inline-block; float: left; background-size: 100%;margin:0.3rem 0.2rem;}
+.infor .inforImg{width: 0.4rem; height: 0.4rem; background: url(../../assets/img/Interview/gongzuojingli.png) no-repeat; display: inline-block; float: left; background-size: 100%;margin:0.3rem 0.2rem;}
 .infor .inforTxt{float: left; display: inline-block;font-size: 0.3rem;color: #303030; line-height: 1rem;}
 
 .infor_form{ padding:0 0.2rem;}
 .infor_form .form_div{}
 .infor_form .form_div .form_title{float: left;
     display: inline-block;
-    width: 30%;
+    width: 32%;
     font-size: 0.3rem;
 	text-align: left;}
 .infor_form .form_input{float: left;width:60%; display: inline-block;font-size: 0.3rem;}
@@ -266,5 +242,21 @@ export default {
 .infor_form .form_div:last-child{border-bottom: none;}
 .m-picker .m-picker-header span:last-of-type {
     color: #F95714 !important;
+}
+.textarea_div .text_title{
+	font-size: 0.3rem;
+  text-align: left;
+  margin-top: 0.2rem;
+}
+.textarea_div textarea{
+	  width: 94%;
+    min-height: 2rem;
+    font-size: 0.3rem;
+    padding: 0.2rem;
+    margin: 0.2rem 0;
+    background: #FAFAFA;
+    border: none;
+    border-radius: 0.1rem;
+		resize:none
 }
 </style>

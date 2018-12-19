@@ -39,7 +39,9 @@ export default {
   data () {
     return {
      isA: true,  //当isA改变时，将更新class
-     isB: false
+     isB: false,
+		 enterpriseId:this.$route.query.enterpriseId,
+		 candidatePhone:this.$route.query.candidatePhone,
     }
   },
   watch:{

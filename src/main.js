@@ -1,6 +1,8 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import App from './App'
 import router from './router'
 import axios from 'axios'
@@ -11,7 +13,9 @@ import VueJsonp from 'vue-jsonp';
 import qs from 'qs'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css';
+import Calendar from 'vue2-datepick';
 
+Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 
@@ -22,6 +26,8 @@ Vue.use(VueJsonp)
 Vue.use(Mint)
 
 Vue.use(Vuex)
+
+Vue.use(Calendar);//日期控件
 
 //开启debug模式
 Vue.config.debug = true;
@@ -45,6 +51,7 @@ export default axios;
 
 import '../src/assets/css/base/common.scss' //引入全局css
 import '../src/assets/css/index.css'
+import '../src/assets/css/index.less'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

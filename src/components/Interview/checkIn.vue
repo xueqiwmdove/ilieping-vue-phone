@@ -15,7 +15,7 @@
 			<form>
 				<div class="form_div">
 				  <img class="icon_img" src="../../assets/img/ic_phone.svg" />
-				  <input type="tel" class="input_txt" autocomplete="off" v-model="dataPhone" placeholder="请输入手机号码" readonly="readonly" id="input_phone" maxlength="11" minlength='11' />
+				  <input type="tel" class="input_txt" autocomplete="off" v-model="dataPhone" placeholder="请输入手机号码" id="input_phone" maxlength="11" minlength='11' />
 				</div>
 				<div class="form_div">
 					<div class="f_l" style="width:55%;">
@@ -43,7 +43,7 @@ export default {
   name: 'checkIn',
   data () {
     return {
-      urlcode:this.$route.query.code,
+      enterpriseId:this.$route.query.enterpriseId,
       dataPhone:'',
       txt_code:'',
 	    codeState:true,
@@ -96,22 +96,20 @@ export default {
 			});
       that.axios({
   			method:'post',
-  			url:api.getlogin,
+  			url:api.interviewLogin,
   			headers:headers(),
   			data:{
-  				agreementId:that.urlcode,
-  				mobile:that.dataPhone,
-  				smsCode:that.txt_code,
-  			},//"mobile="+that.dataPhone+"&smsCode="+that.txt_code,
-		    xhrFields: {
-		        withCredentials: true // 携带跨域cookie
-		    },
+  				enterpriseId:that.enterpriseId,
+  				candidatePhone:that.dataPhone,
+  				phoneCode:that.txt_code,
+  			},
   			cache:false
   			}).then(function(res){
   				console.log(res);
   				Indicator.close();
 					if(res.data.code===10000){
-           that.$router.push({path:'/contract',query:{code:that.urlcode,mobile:that.dataPhone}});
+						let dataId=res.data.data;
+           that.$router.push({path:'/registration',query:{dataId:dataId}});
 				  }else{
 					 that.$toast(res.data.msg);
 					}
@@ -145,7 +143,7 @@ export default {
 			});
       that.axios({
   			method:'post',
-  			url:api.getcode+'/'+that.dataPhone+'/44',
+  			url:api.getcode+'/'+that.dataPhone+'/3',
   			headers:headers("application/x-www-form-urlencoded"),
 //			data:"mobile="+that.dataPhone,
   			cache:false
@@ -157,6 +155,7 @@ export default {
 				  }else{
 					 that.$toast(res.data.msg);
 					 that.codeState=true;
+					 that.codeState2=false;
 					}
 				}).catch(error => {
 				 
