@@ -28,85 +28,91 @@
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>出生日期</div> 
 	   <div class="form_input">
-	   	<input type="number" class="input_txt" @click="setDate" onfocus="this.blur();" :placeholder="user.birthday?user.birthday:'请选择您的生日'" />
-	   </div>
+	   	<input type="number" class="input_txt" @click="setDate" onfocus="this.blur();" :placeholder="user.birthday?user.birthday:'请选择您的出生日期'" />
+		 </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>邮箱</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   	<input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的邮箱地址" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>手机号码</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   	<input type="text" autocomplete="off" maxlength="11" minlength='11' class="input_txt" placeholder="请输入您的手机号码" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>应聘岗位</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   	<input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的应聘的岗位名称" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">所在行业</div> 
 	   <div class="form_input">
-	    <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	    <input type="text" autocomplete="off" class="input_txt" placeholder="请选择所在行业" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">期望行业</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" class="input_txt" placeholder="请选择期望行业" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">工作城市</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" class="input_txt" placeholder="请选择工作城市" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">当前薪酬</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="number" autocomplete="off" class="input_txt" placeholder="请输入您的当前薪酬" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">期望薪酬</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的期望薪酬" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">目前工作状态</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" lass="input_txt" placeholder="请选择目前工作状态" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">最快到岗时间</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的最快到岗时间" />
 	   </div>
 	   </div>
+		 <div class="form_div">
+		 <div class="form_title">技能标签</div> 
+		 <div class="form_input">
+		 <input type="text" autocomplete="off" maxlength="12" class="input_txt" placeholder="请输入您的技能标签,最多12字" />
+		 </div>
+		 </div>
 	   <div class="form_div">
 	   <div class="form_title">政治面貌</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" class="input_txt" placeholder="请选择您的政治面貌" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">籍贯</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的户籍地址" />
 	   </div>
 	   </div>
 	   <div class="form_div">
@@ -125,8 +131,8 @@
 	   <div class="form_div">
 	   <div class="form_title">生育状况</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
-	   </div>
+	   <input type="text" autocomplete="off" @click="showSelect" class="input_txt" onfocus="this.blur();" :placeholder="user.month?user.month:'请输入您的生育状况'"/>
+		 </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
@@ -135,11 +141,13 @@
 	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
 	   </div>
 	   </div>
-	   
+		 
    </div>
    <div class="btn_div">
    	<button class="btn" id="login_btn" >下一步</button>
    </div>
+	 <selet-ios :listData="listData" v-model="user.month" :parentHidden="Hidden" v-on:show="showHidden" type ="other"></selet-ios>
+
  </div>
 </template>
 
@@ -148,14 +156,22 @@
 	import {headers} from '@/assets/js/common/lp.js'
 	import { Indicator} from 'mint-ui';
 
+import seletIos from 'select-ios'
+
 export default {
   name: 'registration',
+	components: {
+      seletIos
+  },
   data () {
     return {
       radio: '1',//性别
 			user:{
 				birthday:'',//出生日期
-			}
+				month: '',//生育状况
+			},
+			listData: Array.from({length: 12}, (value, index) => 1 + index),
+			Hidden:false,
     }
   },
   watch:{
@@ -176,7 +192,12 @@ export default {
 				}
 			})
 		},
-		
+		showSelect(){
+       this.Hidden = true;
+      },
+      showHidden(content){
+        this.Hidden = content;
+      }
   },
   mounted(){
   	let that=this;
@@ -257,7 +278,7 @@ export default {
     width: 30%;
     font-size: 0.3rem;
 	text-align: left;}
-.infor_form .form_input{float: left;width:60%; display: inline-block;font-size: 0.3rem;}
+.infor_form .form_input{float: left;width:60%; display: inline-block;font-size: 0.3rem; text-align: left;}
 .form_title i{margin: 0 0.1rem; color: #f95714;}
 .icon_r{float: right; display: inline-block;width: 0.2rem; height: 0.3rem; background: url(../../assets/img/Interview/icon_right.png) no-repeat
 ; background-size: 100%;margin-top: 0.5rem;}
