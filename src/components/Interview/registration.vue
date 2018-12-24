@@ -15,167 +15,227 @@
 	   <div class="form_div">
 		  <div class="form_title"><i>*</i>姓名</div> 
 		  <div class="form_input">
-			  <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+			  <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的姓名" v-model="user.name" />
 		  </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>姓别</div> 
 	   <div class="form_input">
-			 <el-radio v-model="radio" label="1">男</el-radio>
-       <el-radio v-model="radio" label="2">女</el-radio>
+			 <el-radio v-model="user.sexradio" label="1">男</el-radio>
+       <el-radio v-model="user.sexradio" label="2">女</el-radio>
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>出生日期</div> 
-	   <div class="form_input">
-	   	<input type="number" class="input_txt" @click="setDate" onfocus="this.blur();" :placeholder="user.birthday?user.birthday:'请选择您的出生日期'" />
+	   <div class="form_input" @click="setDate">
+	   	<input type="number" class="input_txt" v-model="user.birthday" onfocus="this.blur();" :placeholder="user.birthday?user.birthday:'请选择您的出生日期'" />
 		 </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>邮箱</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的邮箱地址" />
+	   	<input type="text" autocomplete="off" v-model="user.mailbox" class="input_txt" placeholder="请输入您的邮箱地址" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>手机号码</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" maxlength="11" minlength='11' class="input_txt" placeholder="请输入您的手机号码" />
+	   	<input type="number" autocomplete="off" maxlength="11" minlength='11' v-model="user.phone" class="input_txt" placeholder="请输入您的手机号码" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>应聘岗位</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的应聘的岗位名称" />
+	   	<input type="text" autocomplete="off" class="input_txt" v-model="user.position" placeholder="请输入您的应聘的岗位名称" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">所在行业</div> 
-	   <div class="form_input">
-	    <input type="text" autocomplete="off" class="input_txt" placeholder="请选择所在行业" />
+	   <div class="form_input" onfocus="this.blur();" @click="IndustryClick">
+	    <input type="text" autocomplete="off" class="input_txt" v-model="user.Industry" placeholder="请选择所在行业" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">期望行业</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" class="input_txt" placeholder="请选择期望行业" />
+	   <div class="form_input" onfocus="this.blur();" @click="ExpectClick">
+	   <input type="text" autocomplete="off" class="input_txt" v-model="user.Expect" placeholder="请选择期望行业" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">工作城市</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" class="input_txt" placeholder="请选择工作城市" />
+	   <div class="form_input" onfocus="this.blur();" @click="cityClick">
+	   <input type="text" autocomplete="off" v-model="user.city" class="input_txt" placeholder="请选择工作城市" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
+		 <div class="form_div">
+		 <div class="form_title">具体地址</div> 
+		 <div class="form_input">
+		 <input type="text" autocomplete="off" v-model="user.specific" class="input_txt" placeholder="请输入您的具体地址" />
+		 </div>
+		 </div>
 	   <div class="form_div">
 	   <div class="form_title">当前薪酬</div> 
 	   <div class="form_input">
-	   <input type="number" autocomplete="off" class="input_txt" placeholder="请输入您的当前薪酬" />
+	   <input type="number" autocomplete="off" v-model="user.Pay" class="input_txt" placeholder="请输入您的当前薪酬" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">期望薪酬</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的期望薪酬" />
+	   <input type="number" autocomplete="off" v-model="user.ExpectPay" class="input_txt" placeholder="请输入您的期望薪酬" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">目前工作状态</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" lass="input_txt" placeholder="请选择目前工作状态" />
+	   <div class="form_input" @click="workStatusClick">
+	   <input type="text" autocomplete="off" v-model="user.workStatus" lass="input_txt" placeholder="请选择目前工作状态" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">最快到岗时间</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的最快到岗时间" />
+	   <input type="text" autocomplete="off" v-model="user.arrivalTime" class="input_txt" placeholder="请输入您的最快到岗时间" />
 	   </div>
 	   </div>
 		 <div class="form_div">
 		 <div class="form_title">技能标签</div> 
 		 <div class="form_input">
-		 <input type="text" autocomplete="off" maxlength="12" class="input_txt" placeholder="请输入您的技能标签,最多12字" />
+		 <input type="text" autocomplete="off" v-model="user.skillLabel" maxlength="12" class="input_txt" placeholder="请输入您的技能标签,最多12字" />
 		 </div>
 		 </div>
 	   <div class="form_div">
 	   <div class="form_title">政治面貌</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" class="input_txt" placeholder="请选择您的政治面貌" />
+	   <div class="form_input" @click="politicalOutlookClick">
+	   <input type="text" autocomplete="off" v-model="user.politicalOutlook" class="input_txt" placeholder="请选择您的政治面貌" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">籍贯</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的户籍地址" />
-	   </div>
-	   </div>
-	   <div class="form_div">
-	   <div class="form_title">现住地址</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" v-model="user.nativePlace" class="input_txt" placeholder="请输入您的户籍地址" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">婚姻状况</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <div class="form_input" @click="marriageStatusClick">
+	   <input type="text" autocomplete="off" v-model="user.marriageStatus" class="input_txt" placeholder="请选择您的婚姻状况" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">生育状况</div> 
-	   <div class="form_input">
-	   <input type="text" autocomplete="off" @click="showSelect" class="input_txt" onfocus="this.blur();" :placeholder="user.month?user.month:'请输入您的生育状况'"/>
+	   <div class="form_input" onfocus="this.blur();" @click="fertilityClick">
+	    <input type="text" autocomplete="off" class="input_txt" :placeholder="user.fertility?user.fertility:'请输入您的生育状况'"/>
 		 </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">身份证号码</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+	   <input type="text" autocomplete="off" maxlength="18" minlength='18' v-model="user.cardId" class="input_txt" placeholder="请输入您的身份证号码" />
 	   </div>
 	   </div>
 		 
    </div>
-   <div class="btn_div">
-   	<button class="btn" id="login_btn" >下一步</button>
-   </div>
-	 <selet-ios :listData="listData" v-model="user.month" :parentHidden="Hidden" v-on:show="showHidden" type ="other"></selet-ios>
 
+   <div class="btn_div">
+   	<button class="btn" id="login_btn" @click="firstClick">下一步</button>
+   </div>
+	 
+	 <!-- 弹出框 start -->
+	 <!-- 生育状况  -->
+	 <van-popup v-model="show" :overlay="true" position="bottom" :close-on-click-overlay="true">
+		 <van-picker :show-toolbar="true" :columns="columns" cancel-button-text="取消" @cancel="onCancel" confirm-button-text="完成" @confirm="onConfirm" />
+	 </van-popup>
+	 <!-- 所在行业  -->
+	 <van-popup v-model="showIndustry" :overlay="true" position="bottom" :close-on-click-overlay="true">
+	 	<van-picker :show-toolbar="true" :columns="columnsIndustry" cancel-button-text="取消" @cancel="onCancelIndustry" confirm-button-text="完成" @confirm="onConfirmIndustry"/>
+	 </van-popup>
+	 <!-- 期望行业  -->
+	 <van-popup v-model="showExpect" :overlay="true" position="bottom" :close-on-click-overlay="true">
+	 <van-picker :show-toolbar="true" :columns="columnsIndustry" cancel-button-text="取消" @cancel="onCancelExpect" confirm-button-text="完成" @confirm="onConfirmExpect"/>
+	 </van-popup>
+	 <!-- 城市  -->
+	<van-popup v-model="showCity" :overlay="true" position="bottom" :close-on-click-overlay="true">
+		<van-area :area-list="areaList" :columns-num="3" title="选择城市" value="310110" @cancel="onCancelArea" @confirm="onConfirmArea"/>
+	</van-popup>
+	<!-- 目前工作状态  -->
+	<van-popup v-model="showWorkStatus" :overlay="true" position="bottom" :close-on-click-overlay="true">
+		<van-picker :show-toolbar="true" :columns="columnsWorkStatus" cancel-button-text="取消" @cancel="onCancelWorkStatus" confirm-button-text="完成" @confirm="onConfirmWorkStatus"/>
+	</van-popup>
+	<!-- 政治面貌  -->
+	<van-popup v-model="showPoliticalOutlook" :overlay="true" position="bottom" :close-on-click-overlay="true">
+		<van-picker :show-toolbar="true" :columns="columnsPoliticalOutlook" cancel-button-text="取消" @cancel="onCancelPoliticalOutlook" confirm-button-text="完成" @confirm="onConfirmPoliticalOutlook"/>
+	</van-popup>
+	<!-- 婚姻状况  -->
+	<van-popup v-model="showMarriageStatus" :overlay="true" position="bottom" :close-on-click-overlay="true">
+		<van-picker :show-toolbar="true" :columns="columnsMarriageStatus" cancel-button-text="取消" @cancel="onCancelMarriageStatus" confirm-button-text="完成" @confirm="onConfirmMarriageStatus"/>
+	</van-popup>
+	 <!-- 弹出框 end -->
  </div>
 </template>
 
 <script>
 	import api from '@/api/api.js';
 	import {headers} from '@/assets/js/common/lp.js'
-	import { Indicator} from 'mint-ui';
-
-import seletIos from 'select-ios'
+	import {Indicator} from 'mint-ui';
+	import areaList from '@/assets/js/area.js';
 
 export default {
+	
   name: 'registration',
-	components: {
-      seletIos
-  },
   data () {
     return {
-      radio: '1',//性别
+			enterpriseId:this.$route.query.enterpriseId,
+			interviewId:this.$route.query.interviewId,
 			user:{
+				name:'',//姓名
+				sexradio: '1',//性别 1 男 2女
 				birthday:'',//出生日期
-				month: '',//生育状况
+				fertility: '',//生育状况	
+				mailbox:'',//邮箱
+				phone:'',//手机号码
+				position:'',//应聘岗位
+				Industry:'',//行业
+				Expect:'',//期望行业
+				city:'',//城市
+				specific:'',//具体地址
+				Pay:'',//当前薪酬
+				ExpectPay:'',//期望薪酬
+				workStatus:'',//目前工作状态
+				arrivalTime:'',//最快到岗时间
+				skillLabel:'',//技能标签
+				politicalOutlook:'',//政治面貌
+				nativePlace:'',//籍贯
+				marriageStatus:'',//婚姻状况
+				cardId:'',//身份证号码
 			},
-			listData: Array.from({length: 12}, (value, index) => 1 + index),
-			Hidden:false,
-    }
+			show: false,//生育状况 弹框是否显示
+			columns: ['已生育', '未生育', '其他'],//生育状况 选项
+			showIndustry: false,//生育状况 弹框是否显示
+			columnsIndustry: ['互联网/IT/电子/通信', '广告/传媒/文化/体育', '金融','教育培训','制药/医疗','交通/物流/贸易/零售','专业服务','房地产/建筑','汽车','机械/制造','消费品','服务业','能源/化工/环保','政府/非盈利机构/其他'],//生育状况 选项
+      showCity:false,
+      areaList:areaList,
+			showExpect:false,
+			showWorkStatus:false,
+			columnsWorkStatus:['离职-随时到岗','在职-月内到岗','在职-考虑机会'],
+			showPoliticalOutlook:false,
+			columnsPoliticalOutlook:['中共党员','共青团员','群众'],
+			showMarriageStatus:false,
+			columnsMarriageStatus:['未婚','已婚','丧偶','离婚'],
+		}
   },
+	
   watch:{
-	  
+	  phone:function(){
+	  	this.user.phone=this.user.phone.replace(/[^\d]/g,'');
+	  }
   },
   computed:{
 	 
@@ -192,16 +252,149 @@ export default {
 				}
 			})
 		},
-		showSelect(){
-       this.Hidden = true;
-      },
-      showHidden(content){
-        this.Hidden = content;
-      }
+		fertilityClick(){//生育状况弹框显示
+			this.show=true;
+		},
+		onConfirm(value, index) {//生育状况完成
+      this.user.fertility=value;
+			this.show=false;
+    },
+		onCancel(){//生育状况取消
+			this.show=false;
+		},
+		IndustryClick(){//行业弹框显示
+			this.showIndustry=true;
+		},
+		onConfirmIndustry(value, index) {//行业完成
+			this.user.Industry=value;
+			this.showIndustry=false;
+		},
+		onCancelIndustry(){//行业取消
+			this.showIndustry=false;
+		},
+		ExpectClick(){//期望行业
+		 this.showExpect=true;	
+		},
+		onCancelExpect(){
+			this.showExpect=false;	
+		},
+		onConfirmExpect(value, index){
+			this.user.Expect =value;
+			this.showExpect=false;	
+		},
+		cityClick(){//城市
+			this.showCity=true;
+		},
+		onCancelArea(){//城市取消
+			this.showCity=false;
+		},
+		onConfirmArea(value, index){//城市确认
+			console.log(JSON.stringify(value));
+			let columns=value;
+			let arr=[];
+			for(let i=0;i<columns.length;i++){
+				arr.push(columns[i].name);
+			}
+			let a=new Array(arr);
+      let ss = a.join("-");
+			this.user.city =ss.replace(/\,/g,"-");
+			this.showCity=false;
+		},
+		workStatusClick(){//目前工作状态
+			this.showWorkStatus=true;
+		},
+		onCancelWorkStatus(){
+			this.showWorkStatus=false;
+		},
+		onConfirmWorkStatus(value, index){
+			this.user.workStatus=value;
+			this.showWorkStatus=false;
+		},
+		politicalOutlookClick(){//政治面貌
+			this.showPoliticalOutlook=true;
+		},
+		onCancelPoliticalOutlook(){
+			this.showPoliticalOutlook=false;
+		},
+		onConfirmPoliticalOutlook(value, index){
+			this.user.politicalOutlook=value;
+			this.showPoliticalOutlook=false;
+		},
+		marriageStatusClick(){//婚姻状况
+			this.showMarriageStatus=true;
+		},
+		onCancelMarriageStatus(){
+			this.showMarriageStatus=false;
+		},
+		onConfirmMarriageStatus(value, index){
+			this.user.marriageStatus=value;
+			this.showMarriageStatus=false;
+		},
+		firstClick(){//下一步提交
+		let that=this;
+			if(that.user.name==""){
+				that.$toast("请输入您的姓名");
+				return false;
+			}else if(that.user.birthday==""){
+				that.$toast("请选择您的出生日期");
+				return false;
+			}else if(that.user.mailbox==""){
+				that.$toast("请输入您的邮箱地址");
+				return false;
+			}else if(that.user.phone==""){
+				that.$toast("请输入您的手机号码");
+				return false;
+			}else if(that.user.position==""){
+				that.$toast("请输入您的应聘岗位");
+				return false;
+			}else{
+        Indicator.open({
+        	text: '加载中...',
+        	spinnerType: 'fading-circle'
+        });
+				that.axios({
+					method:'post',
+					url:api.registration+'/'+that.interviewId+'/1',
+					headers:headers(),
+					data:{
+						"name":that.user.name,//姓名
+						"sex":that.user.sexradio,//性别 1 男 2女
+						"dateOfBirth":that.user.birthday,//出生日期
+						"fertility":that.user.fertility,//生育状况	
+						"email":that.user.mailbox,//邮箱
+						"mobile":that.user.phone,//手机号码
+						"post":that.user.position,//应聘岗位
+						"industry":that.user.Industry,//行业
+						"desiredIndustry":that.user.Expect,//期望行业
+						"workCity":that.user.city,//城市
+						"address":that.user.specific,//具体地址
+						"nowSalary":that.user.Pay,//当前薪酬
+						"expectSalary":that.user.ExpectPay,//期望薪酬
+						"wordStatus":that.user.workStatus,//目前工作状态
+						"arrivalTime":that.user.arrivalTime,//最快到岗时间
+						"skillLabel":that.user.skillLabel,//技能标签
+						"nativePlace":that.user.nativePlace,//籍贯
+						"marital":that.user.marriageStatus,//婚姻状况
+						"idCard":that.user.cardId,//身份证号码
+					},
+					cache:false
+					}).then(function(res){
+						console.log(res);
+						Indicator.close();
+						if(res.data.code===10000){
+						  that.$router.push({path:'/registration2',query:{interviewId:that.interviewId}});
+						}else{
+						 that.$toast(res.data.msg);
+						}
+					}).catch(error => {
+					 
+				});
+			}
+		}
+		
   },
   mounted(){
   	let that=this;
-  	
   }
 }
 </script>

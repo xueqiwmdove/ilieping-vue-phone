@@ -109,7 +109,7 @@ export default {
   				Indicator.close();
 					if(res.data.code===10000){
 						let dataId=res.data.data;
-           that.$router.push({path:'/registration',query:{dataId:dataId}});
+           that.$router.push({path:'/registration',query:{interviewId:dataId}});
 				  }else{
 					 that.$toast(res.data.msg);
 					}

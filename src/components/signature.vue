@@ -100,6 +100,7 @@ class Draw {
 }
 
 export default {
+	name: 'signature',
   data () {
     return {
       val:true,

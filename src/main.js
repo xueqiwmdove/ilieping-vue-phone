@@ -15,6 +15,11 @@ import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css';
 import Calendar from 'vue2-datepick';
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
+
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
@@ -63,4 +68,11 @@ new Vue({
 //路由切换时回到顶部
 router.afterEach((to,from,next) => {
   window.scrollTo(0,0);
+});
+router.beforeEach((to, from, next) => {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+  next();
 });

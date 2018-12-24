@@ -2,28 +2,28 @@
   <div class="checkIn">
    <div class="checkIn_div">
 		 <div class="checkIn_header">
-			<div class="f_l">您好，李乾坤</div>
-			<div class="f_r">预览简历</div>
+			<div class="f_l">您好，{{dataInfo.candidateName}}</div>
+			<div class="f_r"><a :href="dataInfo.resumeUrl" target="_blank">预览简历</a></div>
 		 </div>
 		 <div class="checkCon">
 			<div class="title_div">
 				<div class="title_l">面试岗位：</div>
-				<div class="title_r">测试工程师</div>
+				<div class="title_r">{{dataInfo.interviewPosition}}</div>
 			</div> 
 			<div class="title_div">
 				<div class="title_l">候选人负责人：</div>
-				<div class="title_r">李乾坤</div>
+				<div class="title_r">{{dataInfo.candidateHead}}</div>
 			</div>
 			<div class="tabs_div">
 				<div class="tabs_l" :class="{'IsActive': isA}" @click="tabsA">同意面试</div>
 				<div class="tabs_r" :class="{'IsActiveB': isB}" @click="tabsB">不同意面试</div>
 			</div>
 			<div class="textarea_div">
-				<textarea placeholder="例：如同意则填写您方便面试的时间让HR好安 排面试，如不同意则填写拒绝原因"></textarea> 
+				<textarea v-model="detailedReasons" placeholder="例：如同意则填写您方便面试的时间让HR好安 排面试，如不同意则填写拒绝原因"></textarea> 
 			</div>
 		 </div>
 		<div class="btn_div">
-			<button class="btn">提交反馈</button>
+			<button class="btn" @click="candidateclick">提交反馈</button>
 		</div>
 		</div>
   </div>
@@ -40,8 +40,13 @@ export default {
     return {
      isA: true,  //当isA改变时，将更新class
      isB: false,
-		 enterpriseId:this.$route.query.enterpriseId,
-		 candidatePhone:this.$route.query.candidatePhone,
+		 urlId:this.$route.query.urlId,
+		 code:this.$route.query.code,
+		 dataInfo:{},
+		 candidateId:'',
+     employeeName:'',
+		 interviewIntention:1,//0不同意1同意
+		 detailedReasons:'',//
     }
   },
   watch:{
@@ -55,16 +60,73 @@ export default {
 			let that=this;
 			that.isA=true;
 			that.isB=false;
+			that.interviewIntention=1;
 		},
 		tabsB(){
 			let that=this;
 			that.isA=false;
 			that.isB=true;
+			that.interviewIntention=0;
 		},
+		getinfo(){
+			let that=this;
+			Indicator.open({
+				text: '加载中...',
+				spinnerType: 'fading-circle'
+			});
+			that.axios({
+				method:'get',
+				url:api.getfeedbackinfo+'/'+that.urlId,
+				headers:headers(),
+				cache:false
+				}).then(function(res){
+					console.log(res);
+					Indicator.close();
+					if(res.data.code===10000){
+						that.dataInfo=res.data.data;
+						that.candidateId=res.data.data.candidateId;
+						that.employeeName=res.data.data.candidateHead;
+					}else{
+					that.$toast(res.data.msg);
+					}
+				}).catch(error => {
+				
+			});
+		},
+		candidateclick(){
+			let that=this;
+			Indicator.open({
+				text: '加载中...',
+				spinnerType: 'fading-circle'
+			});
+			that.axios({
+				method:'post',
+				url:api.assessment,
+				headers:headers(),
+				data:{
+					"interviewIntention":that.interviewIntention,
+					"detailedReasons":that.detailedReasons,
+					"candidateId":that.candidateId,
+					"employeeName":that.employeeName,
+					"smsId":that.code
+				},
+				cache:false
+				}).then(function(res){
+					console.log(res);
+					Indicator.close();
+					if(res.data.code===10000){
+						that.$toast("提交成功");
+					}else{
+					that.$toast(res.data.msg);
+					}
+				}).catch(error => {
+				
+			});
+		}
   },
   mounted(){
   	let that=this;
-  	
+  	that.getinfo();
   }
 }
 </script>
@@ -88,6 +150,7 @@ export default {
     border-radius: 0.25rem;
 	cursor: pointer;
 }
+.checkIn .checkIn_div .checkIn_header .f_r a{color: #F95714;}
 .checkIn .checkIn_div .checkCon{background: #fff; padding: 0 0.3rem;}
 .checkCon .title_div{width: 100%; height: 0.8rem; line-height: 0.8rem;font-size: 0.28rem; text-align: left;}
 .checkCon .title_div .title_l{ float: left; display: inline-block; width: 30%; color: #666;}

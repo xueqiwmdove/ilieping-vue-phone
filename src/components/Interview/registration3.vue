@@ -14,29 +14,34 @@
    <div class="infor_form">
 		 <div class="textarea_div">
 			 <div class="text_title">您的性格爱好及特长</div>
-			 <textarea placeholder="请在些输入内容(限1000字)" maxlength="1000"></textarea>	   
+			 <textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.hobby" maxlength="1000"></textarea>	   
 		 </div>
 		 <div class="textarea_div">
 		 	<div class="text_title">您的英语水平</div>
-		 	<textarea placeholder="请在些输入内容(限1000字)" maxlength="1000"></textarea>	   
+		 	<textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.English" maxlength="1000"></textarea>	   
 		 </div>
 		 <div class="textarea_div">
 		 	<div class="text_title">您的计算机水平</div>
-		 	<textarea placeholder="请在些输入内容(限1000字)" maxlength="1000"></textarea>	   
+		 	<textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.Computer" maxlength="1000"></textarea>	   
 		 </div>
 		 <div class="textarea_div">
 		 	<div class="text_title">您获得的证书</div>
-		 	<textarea placeholder="请在些输入内容(限1000字)" maxlength="1000"></textarea>	   
+		 	<textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.certificate" maxlength="1000"></textarea>	   
 		 </div>
 		 <div class="textarea_div">
 		 	<div class="text_title">公司内部有无亲戚朋友</div>
-		 	<textarea placeholder="请在些输入内容(限1000字)" maxlength="1000"></textarea>	   
+			<div style="height: 1.2rem;line-height: 1.2rem;border-bottom: 1px solid #ddd;" @click="haveClick">
+				<div class="form_input">
+				<input type="text" autocomplete="off" v-model="otherData.have" class="input_txt"  placeholder="请选择" />
+				</div>
+				<div class="icon_r"></div>
+			</div>
 		 </div>
 		 <div class="infor_form">
 		 <div class="form_div">
 		 <div class="form_title">应聘途径</div> 
-		 <div class="form_input">
-		 <input type="text" autocomplete="off" maxlength="6" minlength='6' class="input_txt" id="input_name" placeholder="请输入您的姓名" />
+		 <div class="form_input" @click="applicationClick">
+		 <input type="text" autocomplete="off" v-model="otherData.application" class="input_txt" placeholder="请选择应聘途径" />
 		 </div>
 		 <div class="icon_r"></div>
 		 </div>
@@ -48,8 +53,17 @@
 		 <div class="Tips_txt">本人已准确理解、并接受上述各项目内容及要求，保证所填内容属实，并同意公司进行核实，如有不实之处，本人无条件接受公司辞退处分，并承担相应责任。</div>
 	 </div>
    <div class="btn_div">
-   	<button class="btn" id="login_btn" >提交</button>
+   	<button class="btn" id="login_btn" @click="thirdClick">提交</button>
    </div>
+	 <!-- 弹出框 start -->
+	 <!-- 公司内部有无亲戚朋友  -->
+	 <van-popup v-model="show" :overlay="true" position="bottom" :close-on-click-overlay="true">
+	 <van-picker :show-toolbar="true" :columns="columns" cancel-button-text="取消" @cancel="onCancel" confirm-button-text="完成" @confirm="onConfirm" />
+	 </van-popup>
+	 <!-- 应聘途径  -->
+	 <van-popup v-model="showApplication" :overlay="true" position="bottom" :close-on-click-overlay="true">
+	 <van-picker :show-toolbar="true" :columns="columnsApplication" cancel-button-text="取消" @cancel="onCancelApplication" confirm-button-text="完成" @confirm="onConfirmApplication" />
+	 </van-popup>
  </div>
 </template>
 
@@ -62,10 +76,19 @@ export default {
   name: 'registration3',
   data () {
     return {
-      radio: '1',//性别
-			user:{
-				birthday:'',//出生日期
-			}
+		interviewId:this.$route.query.interviewId,
+		otherData:{
+			hobby:'',//您的性格爱好及特长
+			English:'',//您的英语水平
+			Computer:'',//您的计算机水平
+			certificate:'',//您获得的证书
+			have:'',//公司内部有无亲戚朋友
+			application:'',//应聘途径
+		},
+    	show:false,
+    	columns:['有','无'],
+    	showApplication:false,
+    	columnsApplication:['内部推荐','社招官网','拉钩','猎聘','BOSS直聘'],
     }
   },
   watch:{
@@ -75,17 +98,60 @@ export default {
 	 
   },
   methods:{
-		setDate(){
-			this.$picker.show({
-				type:'datePicker',
-				date:'1990-01-01',
-				endTime:'2018-01-01',//截至时间
-				startTime:'1930-01-01',//开始时间
-				onOk:(date)=>{
-					this.user.birthday=date;
-				}
-			})
+   haveClick(){//公司内部有无亲戚朋友
+			this.show=true;
 		},
+		onConfirm(value, index) {//公司内部有无亲戚朋友完成
+			this.otherData.have=value;
+			this.show=false;
+		},
+		onCancel(){//公司内部有无亲戚朋友取消
+			this.show=false;
+		},
+	 applicationClick(){//公司内部有无亲戚朋友
+	 	this.showApplication=true;
+	 },
+	 onConfirmApplication(value, index) {//公司内部有无亲戚朋友完成
+	 	this.otherData.application=value;
+	 	this.showApplication=false;
+	 },
+	 onCancelApplication(){//公司内部有无亲戚朋友取消
+	 	this.showApplication=false;
+	 },
+	 thirdClick(){
+		 let that=this;
+
+		Indicator.open({
+			text: '加载中...',
+			spinnerType: 'fading-circle'
+		});
+		that.axios({
+			method:'post',
+			url:api.registration+'/'+that.interviewId+'/1',
+			headers:headers(),
+			data:{
+				"hobby":that.otherData.hobby, //您的性格爱好及特长
+				"englishLevel":that.otherData.English,//您的英语水平
+				"computersLevel":that.otherData.Computer,//您的计算机水平
+				"certificate":that.otherData.certificate,//您获得的证书
+				"isRelation":that.otherData.have,//公司内部有无亲戚朋友
+				"applyPath":that.otherData.application,//应聘途径
+			},
+			cache:false
+			}).then(function(res){
+				console.log(res);
+				Indicator.close();
+				if(res.data.code===10000){
+					that.$router.push({path:'/I_success'});
+				}else{
+					that.$router.push({path:'/wm'});
+				    // that.$toast(res.data.msg);
+				}
+			}).catch(error => {
+			
+		});
+		
+	 }
 		
   },
   mounted(){
@@ -157,7 +223,7 @@ export default {
   box-shadow:none; 
 }
 .infor{height: 1rem;background: #F5F5F5;}
-.infor .inforImg{width: 0.4rem; height: 0.4rem; background: url(../../assets/img/Interview/gongzuojingli.png) no-repeat; display: inline-block; float: left; background-size: 100%;margin:0.3rem 0.2rem;}
+.infor .inforImg{width: 0.4rem; height: 0.4rem; background: url(../../assets/img/Interview/qita.png) no-repeat; display: inline-block; float: left; background-size: 100%;margin:0.3rem 0.2rem;}
 .infor .inforTxt{float: left; display: inline-block;font-size: 0.3rem;color: #303030; line-height: 1rem;}
 
 .infor_form{ padding:0 0.2rem;}
