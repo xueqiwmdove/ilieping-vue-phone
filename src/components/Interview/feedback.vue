@@ -8,7 +8,7 @@
 		 <div class="checkCon">
 			 <div class="subheading">
 				 <div class="f_l">面试信息</div>
-				 <div class="f_r">预览简历</div>
+				 <div class="f_r"><a :href="dataInfo.resumeUrl" target="_blank">预览简历</a></div>
 			 </div>
 			<div class="title_div">
 				<div class="title_l">面试时间：</div>
