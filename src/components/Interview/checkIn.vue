@@ -88,7 +88,7 @@ export default {
 	  },
   },
   methods:{
-  	btnsubmit(){//查看合同
+  	btnsubmit(){//
   	  let that=this;
 			Indicator.open({
 				text: '加载中...',

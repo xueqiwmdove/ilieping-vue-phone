@@ -21,78 +21,78 @@
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>姓别</div> 
 	   <div class="form_input">
-			 <el-radio v-model="user.sexradio" label="1">男</el-radio>
-       <el-radio v-model="user.sexradio" label="2">女</el-radio>
+			 <el-radio v-model="user.sex" label="1">男</el-radio>
+       <el-radio v-model="user.sex" label="2">女</el-radio>
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>出生日期</div> 
 	   <div class="form_input" @click="setDate">
-	   	<input type="number" class="input_txt" v-model="user.birthday" onfocus="this.blur();" :placeholder="user.birthday?user.birthday:'请选择您的出生日期'" />
+	   	<input type="number" class="input_txt" v-model="user.dateOfBirth" onfocus="this.blur();" :placeholder="user.dateOfBirth?user.dateOfBirth:'请选择您的出生日期'" />
 		 </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>邮箱</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" v-model="user.mailbox" class="input_txt" placeholder="请输入您的邮箱地址" />
+	   	<input type="text" autocomplete="off" v-model="user.email" class="input_txt" placeholder="请输入您的邮箱地址" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>手机号码</div> 
 	   <div class="form_input">
-	   	<input type="number" autocomplete="off" maxlength="11" minlength='11' v-model="user.phone" class="input_txt" placeholder="请输入您的手机号码" />
+	   	<input type="number" autocomplete="off" maxlength="11" minlength='11' v-model="user.mobile" class="input_txt" placeholder="请输入您的手机号码" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>应聘岗位</div> 
 	   <div class="form_input">
-	   	<input type="text" autocomplete="off" class="input_txt" v-model="user.position" placeholder="请输入您的应聘的岗位名称" />
+	   	<input type="text" autocomplete="off" class="input_txt" v-model="user.post" placeholder="请输入您的应聘的岗位名称" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">所在行业</div> 
 	   <div class="form_input" onfocus="this.blur();" @click="IndustryClick">
-	    <input type="text" autocomplete="off" class="input_txt" v-model="user.Industry" placeholder="请选择所在行业" />
+	    <input type="text" autocomplete="off" class="input_txt" v-model="user.industry" placeholder="请选择所在行业" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">期望行业</div> 
 	   <div class="form_input" onfocus="this.blur();" @click="ExpectClick">
-	   <input type="text" autocomplete="off" class="input_txt" v-model="user.Expect" placeholder="请选择期望行业" />
+	   <input type="text" autocomplete="off" class="input_txt" v-model="user.desiredIndustry" placeholder="请选择期望行业" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">工作城市</div> 
 	   <div class="form_input" onfocus="this.blur();" @click="cityClick">
-	   <input type="text" autocomplete="off" v-model="user.city" class="input_txt" placeholder="请选择工作城市" />
+	   <input type="text" autocomplete="off" v-model="user.workCity" class="input_txt" placeholder="请选择工作城市" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
 		 <div class="form_div">
 		 <div class="form_title">具体地址</div> 
 		 <div class="form_input">
-		 <input type="text" autocomplete="off" v-model="user.specific" class="input_txt" placeholder="请输入您的具体地址" />
+		 <input type="text" autocomplete="off" v-model="user.address" class="input_txt" placeholder="请输入您的具体地址" />
 		 </div>
 		 </div>
 	   <div class="form_div">
 	   <div class="form_title">当前薪酬</div> 
 	   <div class="form_input">
-	   <input type="number" autocomplete="off" v-model="user.Pay" class="input_txt" placeholder="请输入您的当前薪酬" />
+	   <input type="number" autocomplete="off" v-model="user.nowSalary" class="input_txt" placeholder="请输入您的当前薪酬" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">期望薪酬</div> 
 	   <div class="form_input">
-	   <input type="number" autocomplete="off" v-model="user.ExpectPay" class="input_txt" placeholder="请输入您的期望薪酬" />
+	   <input type="number" autocomplete="off" v-model="user.expectSalary" class="input_txt" placeholder="请输入您的期望薪酬" />
 	   </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title">目前工作状态</div> 
 	   <div class="form_input" @click="workStatusClick">
-	   <input type="text" autocomplete="off" v-model="user.workStatus" lass="input_txt" placeholder="请选择目前工作状态" />
+	   <input type="text" autocomplete="off" v-model="user.wordStatus" lass="input_txt" placeholder="请选择目前工作状态" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
@@ -111,7 +111,7 @@
 	   <div class="form_div">
 	   <div class="form_title">政治面貌</div> 
 	   <div class="form_input" @click="politicalOutlookClick">
-	   <input type="text" autocomplete="off" v-model="user.politicalOutlook" class="input_txt" placeholder="请选择您的政治面貌" />
+	   <input type="text" autocomplete="off" v-model="user.politics" class="input_txt" placeholder="请选择您的政治面貌" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
@@ -124,7 +124,7 @@
 	   <div class="form_div">
 	   <div class="form_title">婚姻状况</div> 
 	   <div class="form_input" @click="marriageStatusClick">
-	   <input type="text" autocomplete="off" v-model="user.marriageStatus" class="input_txt" placeholder="请选择您的婚姻状况" />
+	   <input type="text" autocomplete="off" v-model="user.marital" class="input_txt" placeholder="请选择您的婚姻状况" />
 	   </div>
 	   <div class="icon_r"></div>
 	   </div>
@@ -138,7 +138,7 @@
 	   <div class="form_div">
 	   <div class="form_title">身份证号码</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="18" minlength='18' v-model="user.cardId" class="input_txt" placeholder="请输入您的身份证号码" />
+	   <input type="text" autocomplete="off" maxlength="18" minlength='18' v-model="user.idCard" class="input_txt" placeholder="请输入您的身份证号码" />
 	   </div>
 	   </div>
 		 
@@ -192,29 +192,29 @@ export default {
   name: 'registration',
   data () {
     return {
-			enterpriseId:this.$route.query.enterpriseId,
+			tableId:this.$route.query.tableId || 1,
 			interviewId:this.$route.query.interviewId,
 			user:{
 				name:'',//姓名
-				sexradio: '1',//性别 1 男 2女
-				birthday:'',//出生日期
+				sex: '1',//性别 1 男 2女
+				dateOfBirth:'',//出生日期
 				fertility: '',//生育状况	
-				mailbox:'',//邮箱
-				phone:'',//手机号码
-				position:'',//应聘岗位
-				Industry:'',//行业
-				Expect:'',//期望行业
-				city:'',//城市
-				specific:'',//具体地址
-				Pay:'',//当前薪酬
-				ExpectPay:'',//期望薪酬
-				workStatus:'',//目前工作状态
+				email:'',//邮箱
+				mobile:'',//手机号码
+				post:'',//应聘岗位
+				industry:'',//行业
+				desiredIndustry:'',//期望行业
+				workCity:'',//城市
+				address:'',//具体地址
+				nowSalary:'',//当前薪酬
+				expectSalary:'',//期望薪酬
+				wordStatus:'',//目前工作状态
 				arrivalTime:'',//最快到岗时间
 				skillLabel:'',//技能标签
-				politicalOutlook:'',//政治面貌
+				politics:'',//政治面貌
 				nativePlace:'',//籍贯
-				marriageStatus:'',//婚姻状况
-				cardId:'',//身份证号码
+				marital:'',//婚姻状况
+				idCard:'',//身份证号码
 			},
 			show: false,//生育状况 弹框是否显示
 			columns: ['已生育', '未生育', '其他'],//生育状况 选项
@@ -233,8 +233,8 @@ export default {
   },
 	
   watch:{
-	  phone:function(){
-	  	this.user.phone=this.user.phone.replace(/[^\d]/g,'');
+	  mobile:function(){
+	  	this.user.mobile=this.user.mobile.replace(/[^\d]/g,'');
 	  }
   },
   computed:{
@@ -248,7 +248,7 @@ export default {
 				endTime:'2018-01-01',//截至时间
 				startTime:'1930-01-01',//开始时间
 				onOk:(date)=>{
-					this.user.birthday=date;
+					this.user.dateOfBirth=date;
 				}
 			})
 		},
@@ -266,7 +266,7 @@ export default {
 			this.showIndustry=true;
 		},
 		onConfirmIndustry(value, index) {//行业完成
-			this.user.Industry=value;
+			this.user.industry=value;
 			this.showIndustry=false;
 		},
 		onCancelIndustry(){//行业取消
@@ -279,7 +279,7 @@ export default {
 			this.showExpect=false;	
 		},
 		onConfirmExpect(value, index){
-			this.user.Expect =value;
+			this.user.desiredIndustry =value;
 			this.showExpect=false;	
 		},
 		cityClick(){//城市
@@ -297,7 +297,7 @@ export default {
 			}
 			let a=new Array(arr);
       let ss = a.join("-");
-			this.user.city =ss.replace(/\,/g,"-");
+			this.user.workCity =ss.replace(/\,/g,"-");
 			this.showCity=false;
 		},
 		workStatusClick(){//目前工作状态
@@ -307,7 +307,7 @@ export default {
 			this.showWorkStatus=false;
 		},
 		onConfirmWorkStatus(value, index){
-			this.user.workStatus=value;
+			this.user.wordStatus=value;
 			this.showWorkStatus=false;
 		},
 		politicalOutlookClick(){//政治面貌
@@ -327,7 +327,7 @@ export default {
 			this.showMarriageStatus=false;
 		},
 		onConfirmMarriageStatus(value, index){
-			this.user.marriageStatus=value;
+			this.user.marital=value;
 			this.showMarriageStatus=false;
 		},
 		firstClick(){//下一步提交
@@ -335,16 +335,16 @@ export default {
 			if(that.user.name==""){
 				that.$toast("请输入您的姓名");
 				return false;
-			}else if(that.user.birthday==""){
+			}else if(that.user.dateOfBirth==""){
 				that.$toast("请选择您的出生日期");
 				return false;
-			}else if(that.user.mailbox==""){
+			}else if(that.user.email==""){
 				that.$toast("请输入您的邮箱地址");
 				return false;
-			}else if(that.user.phone==""){
+			}else if(that.user.mobile==""){
 				that.$toast("请输入您的手机号码");
 				return false;
-			}else if(that.user.position==""){
+			}else if(that.user.post==""){
 				that.$toast("请输入您的应聘岗位");
 				return false;
 			}else{
@@ -354,35 +354,36 @@ export default {
         });
 				that.axios({
 					method:'post',
-					url:api.registration+'/'+that.interviewId+'/1',
+					url:api.registration+'/'+that.interviewId+'/'+that.tableId,
 					headers:headers(),
 					data:{
 						"name":that.user.name,//姓名
-						"sex":that.user.sexradio,//性别 1 男 2女
-						"dateOfBirth":that.user.birthday,//出生日期
+						"sex":that.user.sex,//性别 1 男 2女
+						"dateOfBirth":that.user.dateOfBirth,//出生日期
 						"fertility":that.user.fertility,//生育状况	
-						"email":that.user.mailbox,//邮箱
-						"mobile":that.user.phone,//手机号码
-						"post":that.user.position,//应聘岗位
-						"industry":that.user.Industry,//行业
-						"desiredIndustry":that.user.Expect,//期望行业
-						"workCity":that.user.city,//城市
-						"address":that.user.specific,//具体地址
-						"nowSalary":that.user.Pay,//当前薪酬
-						"expectSalary":that.user.ExpectPay,//期望薪酬
-						"wordStatus":that.user.workStatus,//目前工作状态
+						"email":that.user.email,//邮箱
+						"mobile":that.user.mobile,//手机号码
+						"post":that.user.post,//应聘岗位
+						"industry":that.user.industry,//行业
+						"desiredIndustry":that.user.desiredIndustry,//期望行业
+						"workCity":that.user.workCity,//城市
+						"address":that.user.address,//具体地址
+						"nowSalary":that.user.nowSalary,//当前薪酬
+						"expectSalary":that.user.expectSalary,//期望薪酬
+						"wordStatus":that.user.wordStatus,//目前工作状态
 						"arrivalTime":that.user.arrivalTime,//最快到岗时间
 						"skillLabel":that.user.skillLabel,//技能标签
+						"politics":that.user.politics,//政治面貌 
 						"nativePlace":that.user.nativePlace,//籍贯
-						"marital":that.user.marriageStatus,//婚姻状况
-						"idCard":that.user.cardId,//身份证号码
+						"marital":that.user.marital,//婚姻状况
+						"idCard":that.user.idCard,//身份证号码
 					},
 					cache:false
 					}).then(function(res){
 						console.log(res);
 						Indicator.close();
 						if(res.data.code===10000){
-						  that.$router.push({path:'/registration2',query:{interviewId:that.interviewId}});
+						  that.$router.push({path:'/registrationlist',query:{interviewId:that.interviewId}});
 						}else{
 						 that.$toast(res.data.msg);
 						}
@@ -390,11 +391,38 @@ export default {
 					 
 				});
 			}
+		},
+		getData(){
+			let that=this;
+			Indicator.open({
+				text: '加载中...',
+				spinnerType: 'fading-circle'
+			});
+			that.axios({
+				method:'get',
+				url:api.getregistration+'/'+that.tableId,
+				headers:headers(),
+				cache:false
+				}).then(function(res){
+					console.log(res);
+					Indicator.close();
+					if(res.data.code===10000){
+						that.user=res.data.data;
+					}else{
+					that.$toast(res.data.msg);
+					}
+				}).catch(error => {
+				
+			});
+			
 		}
 		
   },
   mounted(){
   	let that=this;
+		if(that.tableId!=""){
+			that.getData();
+		}
   }
 }
 </script>

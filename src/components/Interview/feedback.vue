@@ -137,7 +137,8 @@ export default {
 			});
 		},
 		previewClick(tableId){
-			that.$router.push({path:'/registration',query:{tableId:tableId}});
+			let that=this;
+			that.$router.push({path:'/preview',query:{tableId:tableId}});
 		},
 		subminClick(){
 			let that=this;
@@ -182,20 +183,7 @@ export default {
 .checkIn{background: #F5F5F5;font-family:PingFangSC-Semibold;}	
 .checkIn .checkIn_div{}	
 .checkIn .checkIn_div .checkIn_header{ height: 1rem; line-height: 1rem; text-align: center; padding-left: 0.2rem;font-size:0.3rem;font-weight:600;color:#303030;}
-.checkIn .checkIn_div .checkIn_header .f_r,.checkCon .subheading .f_r{
-    font-size: 14px;
-    font-weight: 400;
-    color: rgba(249,87,20,1);
-    width: 1.6rem;
-    text-align: center;
-    border: 1px solid #F95714;
-    margin: 0.2rem 0.2rem 0 0;
-    background-color: #fff;
-    height: 0.5rem;
-    line-height: 0.5rem;
-    border-radius: 0.25rem;
-	cursor: pointer;
-}
+.checkIn .checkIn_div .checkIn_header .f_r,.checkCon .subheading .f_r{font-size: 14px;font-weight: 400;color: rgba(249,87,20,1);width: 1.6rem;text-align: center;border: 1px solid #F95714;margin: 0.2rem 0.2rem 0 0;background-color: #fff; height: 0.5rem;line-height: 0.5rem;border-radius: 0.25rem;cursor: pointer;}
 .checkCon .subheading{height: 1rem; line-height: 1rem; text-align: left; padding-left: 0.2rem;font-size:0.28rem;font-weight:600;color:#303030;}
 
 .checkIn .checkIn_div .checkCon{background: #fff; padding: 0 0.3rem;}
@@ -216,6 +204,6 @@ export default {
 .IsActiveB{background: #F95714;color: #fff;background-color: #F95714; border-radius: 0 0.3rem 0.3rem 0;}
 .btn_div{background: #f5f5f5; padding: 0.1rem 0.3rem;width: auto; margin: 0;}
 
-.people{width: 0.3rem; height: 0.4rem; display: inline-block; background: url(../../assets/img/Interview/ic_people.png) no-repeat; background-size: 100%;}
+.people{width: 0.3rem; height: 0.3rem; display: inline-block; background: url(../../assets/img/Interview/ic_people.png) no-repeat; background-size: 100%;}
 
 </style>

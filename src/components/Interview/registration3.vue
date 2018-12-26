@@ -18,11 +18,11 @@
 		 </div>
 		 <div class="textarea_div">
 		 	<div class="text_title">您的英语水平</div>
-		 	<textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.English" maxlength="1000"></textarea>	   
+		 	<textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.englishLevel" maxlength="1000"></textarea>	   
 		 </div>
 		 <div class="textarea_div">
 		 	<div class="text_title">您的计算机水平</div>
-		 	<textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.Computer" maxlength="1000"></textarea>	   
+		 	<textarea placeholder="请在些输入内容(限1000字)" v-model="otherData.computersLevel" maxlength="1000"></textarea>	   
 		 </div>
 		 <div class="textarea_div">
 		 	<div class="text_title">您获得的证书</div>
@@ -32,7 +32,7 @@
 		 	<div class="text_title">公司内部有无亲戚朋友</div>
 			<div style="height: 1.2rem;line-height: 1.2rem;border-bottom: 1px solid #ddd;" @click="haveClick">
 				<div class="form_input">
-				<input type="text" autocomplete="off" v-model="otherData.have" class="input_txt"  placeholder="请选择" />
+				<input type="text" autocomplete="off" v-model="otherData.isRelation" class="input_txt"  placeholder="请选择" />
 				</div>
 				<div class="icon_r"></div>
 			</div>
@@ -41,7 +41,7 @@
 		 <div class="form_div">
 		 <div class="form_title">应聘途径</div> 
 		 <div class="form_input" @click="applicationClick">
-		 <input type="text" autocomplete="off" v-model="otherData.application" class="input_txt" placeholder="请选择应聘途径" />
+		 <input type="text" autocomplete="off" v-model="otherData.applyPath" class="input_txt" placeholder="请选择应聘途径" />
 		 </div>
 		 <div class="icon_r"></div>
 		 </div>
@@ -76,14 +76,15 @@ export default {
   name: 'registration3',
   data () {
     return {
+		tableId:this.$route.query.tableId || 1,
 		interviewId:this.$route.query.interviewId,
 		otherData:{
 			hobby:'',//您的性格爱好及特长
-			English:'',//您的英语水平
-			Computer:'',//您的计算机水平
+			englishLevel:'',//您的英语水平
+			computersLevel:'',//您的计算机水平
 			certificate:'',//您获得的证书
-			have:'',//公司内部有无亲戚朋友
-			application:'',//应聘途径
+			isRelation:'',//公司内部有无亲戚朋友
+			applyPath:'',//应聘途径
 		},
     	show:false,
     	columns:['有','无'],
@@ -102,7 +103,7 @@ export default {
 			this.show=true;
 		},
 		onConfirm(value, index) {//公司内部有无亲戚朋友完成
-			this.otherData.have=value;
+			this.otherData.isRelation=value;
 			this.show=false;
 		},
 		onCancel(){//公司内部有无亲戚朋友取消
@@ -112,7 +113,7 @@ export default {
 	 	this.showApplication=true;
 	 },
 	 onConfirmApplication(value, index) {//公司内部有无亲戚朋友完成
-	 	this.otherData.application=value;
+	 	this.otherData.applyPath=value;
 	 	this.showApplication=false;
 	 },
 	 onCancelApplication(){//公司内部有无亲戚朋友取消
@@ -127,15 +128,15 @@ export default {
 		});
 		that.axios({
 			method:'post',
-			url:api.registration+'/'+that.interviewId+'/1',
+			url:api.registration+'/'+that.interviewId+'/'+that.tableId,
 			headers:headers(),
 			data:{
 				"hobby":that.otherData.hobby, //您的性格爱好及特长
-				"englishLevel":that.otherData.English,//您的英语水平
-				"computersLevel":that.otherData.Computer,//您的计算机水平
+				"englishLevel":that.otherData.englishLevel,//您的英语水平
+				"computersLevel":that.otherData.computersLevel,//您的计算机水平
 				"certificate":that.otherData.certificate,//您获得的证书
-				"isRelation":that.otherData.have,//公司内部有无亲戚朋友
-				"applyPath":that.otherData.application,//应聘途径
+				"isRelation":that.otherData.isRelation,//公司内部有无亲戚朋友
+				"applyPath":that.otherData.applyPath,//应聘途径
 			},
 			cache:false
 			}).then(function(res){

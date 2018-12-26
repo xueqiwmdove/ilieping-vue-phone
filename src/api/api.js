@@ -24,6 +24,8 @@ const api = {
 	getdetailinfo:urlPrefix+'interview/h5/detail',//获取候选人信息
 	agree:urlPrefix+'interview/h5/submit/agree',//候选人面试反馈
 	feedback:urlPrefix+'interview/h5/submit/feedback',//提交面试反馈
+	getregistration:urlPrefix+'interview/h5/get/registration',//获取列表信息
+
 };
 export default api;
 
