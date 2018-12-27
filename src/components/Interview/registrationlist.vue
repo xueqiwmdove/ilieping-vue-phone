@@ -26,15 +26,15 @@
 		 </div>
 		 <div class="form_div">
 		 <div class="form_title"><i>*</i>任职开始时间</div> 
-		 <div class="form_input" @click="setDateStart(index)">
-		 <input type="number" class="input_txt" v-model="item.startTime" onfocus="this.blur();" :placeholder="item.startTime?item.startTime:'请选择时间'" />
+		 <div class="form_input" @click="setDateStart">
+		 <input type="number" class="input_txt" v-model="item.employmentPeriodStartTime" :placeholder="item.employmentPeriodStartTime?item.employmentPeriodStartTime:'请选择任职时开始时间'" />
 		 </div>
 		 <div class="icon_r"></div>
 		 </div>
 		 <div class="form_div">
 		 <div class="form_title"><i>*</i>任职结束时间</div> 
-		 <div class="form_input" @click="setDateEnd(index)">
-		 <input type="number" class="input_txt" v-model="item.endTime" onfocus="this.blur();" :placeholder="item.endTime?item.endTime:'请选择时间'" />
+		 <div class="form_input" @click="setDateEnd">
+		 <input type="number" class="input_txt" v-model="item.employmentPeriodEndTime" :placeholder="item.employmentPeriodEndTime?item.employmentPeriodEndTime:'请选择任职结束时间'" />
 		 </div>
 		 <div class="icon_r"></div>
 		 </div>
@@ -59,7 +59,7 @@
 		 <div class="form_div">
 		 <div class="form_title">联系方式</div> 
 		 <div class="form_input">
-		 <input type="number" autocomplete="off" v-model="item.contact" class="input_txt"  placeholder="请输入证明人联系方式" />
+		 <input type="tel" autocomplete="off" v-model="item.contact" class="input_txt"  placeholder="请输入证明人联系方式" />
 		 </div>
 		 </div>
 		 <div class="textarea_div">
@@ -87,14 +87,14 @@
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>就读开始时间</div> 
-	   <div class="form_input" @click="attendstartClick(index)">
+	   <div class="form_input" @click="attendstartClick">
 	   <input type="text" autocomplete="off" v-model="item.startTime" class="input_txt" placeholder="请选择就读开始时间" />
 	   </div>
 		 <div class="icon_r"></div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>就读结束时间</div> 
-	   <div class="form_input" @click="attendendClick(index)">
+	   <div class="form_input" @click="attendendClick">
 	   <input type="text" autocomplete="off" v-model="item.endTime" class="input_txt" placeholder="请选择就读结束时间" />
 	   </div>
 		 <div class="icon_r"></div>
@@ -160,8 +160,8 @@ export default {
 	},
   data () {
     return {
-			tableId:this.$route.query.tableId || 1,
-		interviewId:this.$route.query.interviewId,
+			interviewFormTemplate:this.$route.query.interviewFormTemplate,
+			interviewId:this.$route.query.interviewId,
 			show:false,
 			columns:['是','否'],
 			showEducation:false,
@@ -169,8 +169,8 @@ export default {
       workExperienceDTOList:[//工作经历
 				{
 				companyName:'',//公司名称
-				startTime:'',//任职开始时间
-				endTime:'',//任职结束时间
+				employmentPeriodStartTime:'',//任职开始时间
+				employmentPeriodEndTime:'',//任职结束时间
 				postName:'',//任职岗位
 				salary:'',//薪资
 				certifier:'',//证明人
@@ -214,8 +214,8 @@ export default {
 			}else{
 				that.workExperienceDTOList.push({
 					companyName:'',//公司名称
-					startTime:'',//任职开始时间
-					endTime:'',//任职结束时间
+					employmentPeriodStartTime:'',//任职开始时间
+					employmentPeriodEndTime:'',//任职结束时间
 					postName:'',//任职岗位
 					salary:'',//薪资
 					certifier:'',//证明人
@@ -225,9 +225,9 @@ export default {
 				});
 			}
 		},
-		addDomainEducation(count){//添加教育经历
+		addDomainEducation(countEd){//添加教育经历
 		let that=this;
-		 if(count==3){
+		 if(countEd==3){
 		 	that.$toast("最多添加三条教育经历");
 		 	return false;
 		 }else{
@@ -256,47 +256,47 @@ export default {
 			this.show=false;
 		},
 		
-		setDateStart(index){//任职开始时间
+		setDateStart(){//任职开始时间
 			this.$picker.show({
 				type:'datePicker',
 				date:'1990-01-01',
 				endTime:'2018-01-01',//截至时间
 				startTime:'1930-01-01',//开始时间
 				onOk:(date)=>{
-					this.workExperienceDTOList[index].startTime=date;
+					this.workExperienceDTOList[this.count].employmentPeriodStartTime=date;
 				}
 			})
 		},
-		setDateEnd(index){//任职结束时间
+		setDateEnd(){//任职结束时间
 			this.$picker.show({
 				type:'datePicker',
 				date:'1990-01-01',
 				endTime:'2018-01-01',//截至时间
 				startTime:'1930-01-01',//开始时间
 				onOk:(date)=>{
-					this.workExperienceDTOList[index].endTime=date;
+					this.workExperienceDTOList[this.count].employmentPeriodEndTime=date;
 				}
 			})
 		},
-		attendstartClick(index){//就读开始时间
+		attendstartClick(){//就读开始时间
 		 this.$picker.show({
 		 	type:'datePicker',
 		 	date:'1990-01-01',
 		 	endTime:'2018-01-01',//截至时间
 		 	startTime:'1930-01-01',//开始时间
 		 	onOk:(date)=>{
-		 		this.educationDTOList[index].startTime=date;
+		 		this.educationDTOList[this.countEd].startTime=date;
 		 	}
 		 })	
 		},
-		attendendClick(index){//就读结束时间
+		attendendClick(){//就读结束时间
 		this.$picker.show({
 			type:'datePicker',
 			date:'1990-01-01',
 			endTime:'2018-01-01',//截至时间
 			startTime:'1930-01-01',//开始时间
 			onOk:(date)=>{
-				this.educationDTOList[index].endTime=date;
+				this.educationDTOList[this.countEd].endTime=date;
 			}
 		})	
 		},
@@ -315,10 +315,10 @@ export default {
 			if(that.workExperienceDTOList[that.count].companyName==""){
 				that.$toast("请输入您的公司名称");
 				return false;
-			}else if(that.workExperienceDTOList[that.count].startTime==""){
+			}else if(that.workExperienceDTOList[that.count].employmentPeriodStartTime==""){
 				that.$toast("请选择您的任职开始时间");
 				return false;
-			}else if(that.workExperienceDTOList[that.count].endTime==""){
+			}else if(that.workExperienceDTOList[that.count].employmentPeriodEndTime==""){
 				that.$toast("请选择您的任职结束时间");
 				return false;
 			}else if(that.workExperienceDTOList[that.count].post==""){
@@ -340,7 +340,7 @@ export default {
 				});
 				that.axios({
 					method:'post',
-					url:api.registration+'/'+that.interviewId+'/'+that.tableId,
+					url:api.registration+'/'+that.interviewId+'/1',
 					headers:headers(),
 					data:{
 						"educationDTOList":that.educationDTOList,
@@ -351,7 +351,7 @@ export default {
 						console.log(res);
 						Indicator.close();
 						if(res.data.code===10000){
-							that.$router.push({path:'/registration3',query:{interviewId:that.interviewId}});
+							that.$router.push({path:'/registration3',query:{interviewId:that.interviewId,interviewFormTemplate:that.interviewFormTemplate}});
 						}else{
 						that.$toast(res.data.msg);
 						}
@@ -369,7 +369,7 @@ export default {
 			});
 			that.axios({
 				method:'get',
-				url:api.getregistration+'/'+that.tableId,
+				url:api.getregistration+'/'+that.interviewFormTemplate,
 				headers:headers(),
 				cache:false
 				}).then(function(res){
@@ -389,7 +389,7 @@ export default {
   },
   mounted(){
   	let that=this;
-  	if(that.tableId!=""){
+  	if(that.interviewFormTemplate!=null){
   		that.getData();
   	}
   }

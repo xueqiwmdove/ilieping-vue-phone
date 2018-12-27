@@ -15,7 +15,7 @@
 	   <div class="form_div">
 		  <div class="form_title"><i>*</i>姓名</div> 
 		  <div class="form_input">
-			  <input type="text" autocomplete="off" class="input_txt" placeholder="请输入您的姓名" v-model="user.name" />
+			  <input type="text" maxlength="5" autocomplete="off" class="input_txt" placeholder="请输入您的姓名" v-model="user.name" />
 		  </div>
 	   </div>
 	   <div class="form_div">
@@ -27,10 +27,12 @@
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>出生日期</div> 
-	   <div class="form_input" @click="setDate">
+		 <div class="click_div" @click="setDate">
+	   <div class="form_input">
 	   	<input type="number" class="input_txt" v-model="user.dateOfBirth" onfocus="this.blur();" :placeholder="user.dateOfBirth?user.dateOfBirth:'请选择您的出生日期'" />
 		 </div>
-	   <div class="icon_r"></div>
+		 <div class="icon_r"></div>
+		 </div>
 	   </div>
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>邮箱</div> 
@@ -41,7 +43,7 @@
 	   <div class="form_div">
 	   <div class="form_title"><i>*</i>手机号码</div> 
 	   <div class="form_input">
-	   	<input type="number" autocomplete="off" maxlength="11" minlength='11' v-model="user.mobile" class="input_txt" placeholder="请输入您的手机号码" />
+	   	<input type="tel" autocomplete="off" minlenght="11" maxlength="11" v-model="mobile" class="input_txt" placeholder="请输入您的手机号码" />
 	   </div>
 	   </div>
 	   <div class="form_div">
@@ -138,7 +140,7 @@
 	   <div class="form_div">
 	   <div class="form_title">身份证号码</div> 
 	   <div class="form_input">
-	   <input type="text" autocomplete="off" maxlength="18" minlength='18' v-model="user.idCard" class="input_txt" placeholder="请输入您的身份证号码" />
+	   <input type="text" autocomplete="off" maxlength="18" minlength='18' v-model="idCard" class="input_txt" placeholder="请输入您的身份证号码" />
 	   </div>
 	   </div>
 		 
@@ -192,7 +194,7 @@ export default {
   name: 'registration',
   data () {
     return {
-			tableId:this.$route.query.tableId || 1,
+			interviewFormTemplate:this.$route.query.interviewFormTemplate,
 			interviewId:this.$route.query.interviewId,
 			user:{
 				name:'',//姓名
@@ -229,13 +231,18 @@ export default {
 			columnsPoliticalOutlook:['中共党员','共青团员','群众'],
 			showMarriageStatus:false,
 			columnsMarriageStatus:['未婚','已婚','丧偶','离婚'],
+			mobile:'',
+			idCard:''
 		}
   },
 	
   watch:{
 	  mobile:function(){
-	  	this.user.mobile=this.user.mobile.replace(/[^\d]/g,'');
-	  }
+	  	this.mobile=this.mobile.replace(/[^\d]/g,'');
+	  },
+		idCard:function(){
+			this.idCard=this.idCard.replace(/[\W]/g,'');
+		}
   },
   computed:{
 	 
@@ -341,8 +348,11 @@ export default {
 			}else if(that.user.email==""){
 				that.$toast("请输入您的邮箱地址");
 				return false;
-			}else if(that.user.mobile==""){
+			}else if(that.mobile==""){
 				that.$toast("请输入您的手机号码");
+				return false;
+			}else if(!(/^1[34578]\d{9}$/.test(that.mobile))){
+				that.$toast("请输入正确的手机号码");
 				return false;
 			}else if(that.user.post==""){
 				that.$toast("请输入您的应聘岗位");
@@ -354,7 +364,7 @@ export default {
         });
 				that.axios({
 					method:'post',
-					url:api.registration+'/'+that.interviewId+'/'+that.tableId,
+					url:api.registration+'/'+that.interviewId+'/1',
 					headers:headers(),
 					data:{
 						"name":that.user.name,//姓名
@@ -362,7 +372,7 @@ export default {
 						"dateOfBirth":that.user.dateOfBirth,//出生日期
 						"fertility":that.user.fertility,//生育状况	
 						"email":that.user.email,//邮箱
-						"mobile":that.user.mobile,//手机号码
+						"mobile":that.mobile,//手机号码
 						"post":that.user.post,//应聘岗位
 						"industry":that.user.industry,//行业
 						"desiredIndustry":that.user.desiredIndustry,//期望行业
@@ -376,14 +386,14 @@ export default {
 						"politics":that.user.politics,//政治面貌 
 						"nativePlace":that.user.nativePlace,//籍贯
 						"marital":that.user.marital,//婚姻状况
-						"idCard":that.user.idCard,//身份证号码
+						"idCard":that.idCard,//身份证号码
 					},
 					cache:false
 					}).then(function(res){
 						console.log(res);
 						Indicator.close();
 						if(res.data.code===10000){
-						  that.$router.push({path:'/registrationlist',query:{interviewId:that.interviewId}});
+						  that.$router.push({path:'/registrationlist',query:{interviewId:that.interviewId,interviewFormTemplate:that.interviewFormTemplate}});
 						}else{
 						 that.$toast(res.data.msg);
 						}
@@ -400,7 +410,7 @@ export default {
 			});
 			that.axios({
 				method:'get',
-				url:api.getregistration+'/'+that.tableId,
+				url:api.getregistration+'/'+that.interviewFormTemplate,
 				headers:headers(),
 				cache:false
 				}).then(function(res){
@@ -408,6 +418,8 @@ export default {
 					Indicator.close();
 					if(res.data.code===10000){
 						that.user=res.data.data;
+						that.mobile=res.data.data.mobile;
+						that.idCard=res.data.data.idCard;
 					}else{
 					that.$toast(res.data.msg);
 					}
@@ -420,7 +432,7 @@ export default {
   },
   mounted(){
   	let that=this;
-		if(that.tableId!=""){
+		if(that.interviewFormTemplate!=null){
 			that.getData();
 		}
   }
@@ -509,4 +521,5 @@ export default {
 .m-picker .m-picker-header span:last-of-type {
     color: #F95714 !important;
 }
+.click_div{width: 70%; float: left;display: inline-block;}
 </style>

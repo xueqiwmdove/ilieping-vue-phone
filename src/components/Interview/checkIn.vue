@@ -108,8 +108,12 @@ export default {
   				console.log(res);
   				Indicator.close();
 					if(res.data.code===10000){
-						let dataId=res.data.data;
-           that.$router.push({path:'/registration',query:{interviewId:dataId}});
+						let interviewFormTemplate=res.data.data.interviewFormTemplate;
+						if(interviewFormTemplate==null){
+							that.$router.push({path:'/registration',query:{interviewId:res.data.data.id}});
+						}else{
+							that.$router.push({path:'/registration',query:{interviewId:res.data.data.id,interviewFormTemplate:interviewFormTemplate}});
+						}
 				  }else{
 					 that.$toast(res.data.msg);
 					}

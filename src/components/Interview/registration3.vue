@@ -76,8 +76,8 @@ export default {
   name: 'registration3',
   data () {
     return {
-		tableId:this.$route.query.tableId || 1,
-		interviewId:this.$route.query.interviewId,
+			interviewFormTemplate:this.$route.query.interviewFormTemplate,
+			interviewId:this.$route.query.interviewId,
 		otherData:{
 			hobby:'',//您的性格爱好及特长
 			englishLevel:'',//您的英语水平
@@ -128,7 +128,7 @@ export default {
 		});
 		that.axios({
 			method:'post',
-			url:api.registration+'/'+that.interviewId+'/'+that.tableId,
+			url:api.registration+'/'+that.interviewId+'/1',
 			headers:headers(),
 			data:{
 				"hobby":that.otherData.hobby, //您的性格爱好及特长
@@ -152,12 +152,38 @@ export default {
 			
 		});
 		
+	 },
+	 getData(){
+	 	let that=this;
+	 	Indicator.open({
+	 		text: '加载中...',
+	 		spinnerType: 'fading-circle'
+	 	});
+	 	that.axios({
+	 		method:'get',
+	 		url:api.getregistration+'/'+that.interviewFormTemplate,
+	 		headers:headers(),
+	 		cache:false
+	 		}).then(function(res){
+	 			console.log(res);
+	 			Indicator.close();
+	 			if(res.data.code===10000){
+	 				that.otherData=res.data.data;
+	 			}else{
+	 			that.$toast(res.data.msg);
+	 			}
+	 		}).catch(error => {
+	 		
+	 	});
+	 	
 	 }
 		
   },
   mounted(){
   	let that=this;
-  	
+  	if(that.interviewFormTemplate!=null){
+  		that.getData();
+  	}
   }
 }
 </script>
