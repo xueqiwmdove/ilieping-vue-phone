@@ -148,9 +148,9 @@ export default {
 			if(that.dataPhone==''){
 				that.$toast("手机号码不能为空");
 				return false;
-			}else if(!(/^1[34578]\d{9}$/.test(that.mobile))){
-				that.$toast("请输入正确的手机号码");
-				return false;
+// 			}else if(!(/^1[34578]\d{9}$/.test(that.mobile))){
+// 				that.$toast("请输入正确的手机号码");
+// 				return false;
 			}else{
 				Indicator.open({
 					text: '加载中...',

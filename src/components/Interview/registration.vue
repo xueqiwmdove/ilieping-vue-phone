@@ -351,9 +351,9 @@ export default {
 			}else if(that.mobile==""){
 				that.$toast("请输入您的手机号码");
 				return false;
-			}else if(!(/^1[34578]\d{9}$/.test(that.mobile))){
-				that.$toast("请输入正确的手机号码");
-				return false;
+// 			}else if(!(/^1[34578]\d{9}$/.test(that.mobile))){
+// 				that.$toast("请输入正确的手机号码");
+// 				return false;
 			}else if(that.user.post==""){
 				that.$toast("请输入您的应聘岗位");
 				return false;

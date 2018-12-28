@@ -42,7 +42,7 @@ export default {
 		 dataId:this.$route.query.dataId,
 		 dataInfo:{},
 		 id:'',
-		 interviewIntention:2,//1不同意2同意
+		 interviewIntention:1,//1不同意2同意
 		 detailedReasons:'',//
     }
   },
@@ -110,6 +110,7 @@ export default {
 					Indicator.close();
 					if(res.data.code===10000){
 						that.$toast("提交成功");
+						that.$router.push({path:'/success'});
 					}else{
 					that.$toast(res.data.msg);
 					}

@@ -30,7 +30,7 @@
 			<div class="title_div">
 				<div class="title_l">面试登记表：</div>
 				<div class="title_r">
-					<span v-if="dataInfo.interviewFormTemplate==''">未填写</span>
+					<span v-if="dataInfo.interviewFormTemplate==null">未填写</span>
 					<span v-else>已填写</span>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
 			</div>
 		 </div>
 		<div class="btn_div">
-			<button class="btn" @click="subminClick">提交评价反馈</button>
+			<button class="btn" @click="subminClick" :class="click_button" :disabled="subDisabled">提交评价反馈</button>
 		</div>
 		</div>
   </div>
@@ -71,14 +71,33 @@ export default {
 		 dataInfo:{},
 		 feedId:'',
 		 interviewSatisfaction:4,//1 不满意 2 一般 3 较满意  4 很满意
-		 interviewFeedback:''
+		 interviewFeedback:'',
     }
   },
   watch:{
 	  
   },
   computed:{
-	 
+	click_button: function(){ // 使用按钮样式(查看合同)
+	if (this.interviewFeedback != "" && !this.isLoading) {
+			return {
+				click_btn: false
+			}
+		}
+		else {
+			return {
+				click_btn: true
+			}
+		}
+	},	
+	 subDisabled: function () {
+	 	if (this.interviewFeedback == "" || this.isLoading) {
+	 		return true
+	 	}
+	 	else {
+	 		return false
+	 	}
+	 },
   },
   methods:{
 		tabsA(){
@@ -162,6 +181,7 @@ export default {
 					Indicator.close();
 					if(res.data.code===10000){
 						that.$toast("提交成功");
+						that.$router.push({path:'/success'});
 					}else{
 					that.$toast(res.data.msg);
 					}

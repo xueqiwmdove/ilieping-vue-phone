@@ -17,6 +17,7 @@ import registration2 from '@/components/Interview/registration2' //面试登录�
 import registration3 from '@/components/Interview/registration3' //面试登录表3
 import I_success from '@/components/Interview/I_success' //成功
 import wm from '@/components/Interview/wm' //失败
+import success from '@/components/Interview/success' //成功
 
 import registrationList from '@/components/Interview/registrationList' //面试登录表2
 
@@ -170,6 +171,14 @@ export default new Router({
 			component: preview,
 			meta:{
 				title: '预览面试登记表'
+			}
+		},
+		{
+			path: '/success',
+			name: 'success',
+			component: success,
+			meta:{
+				title: '提交成功'
 			}
 		},
   ]

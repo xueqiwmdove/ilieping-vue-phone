@@ -208,7 +208,7 @@ export default {
 		},
 		addDomainWork(count){//添加工作经历
 		let that=this;
-		  if(count==3){
+		  if(count==2){
 				that.$toast("最多添加三条工作经历");
 				return false;
 			}else{
@@ -227,7 +227,7 @@ export default {
 		},
 		addDomainEducation(countEd){//添加教育经历
 		let that=this;
-		 if(countEd==3){
+		 if(countEd==2){
 		 	that.$toast("最多添加三条教育经历");
 		 	return false;
 		 }else{
