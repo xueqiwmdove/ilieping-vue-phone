@@ -3,11 +3,11 @@
    <div class="checkIn_div">
 		 <div class="checkIn_header">
 			 <i class="home_img"></i>
-			 <span>上海棋至文化有限公司</span>
+			 <span>{{company}}</span>
 		 </div>
 		 <div class="checkCon">
 			 <div class="checkCon_title">面试登记表</div>
-			 <div class="checkCon_title2">Hi~我是上海哈哈哈网络科技有限公司的HR，欢迎您来参加面试。为了方便您快速进入面试流程，请您抽空填写面试登记表。</div>
+			 <div class="checkCon_title2">Hi~我是{{company}}的HR，欢迎您来参加面试。为了方便您快速进入面试流程，请您抽空填写面试登记表。</div>
 		 <div class="checkCon_warning">
 			 <i></i>
 			 <span>为了确保您的信息安全，请进行面试签到</span>
@@ -50,9 +50,13 @@ export default {
 	    codeState2:false,
 	    timeNum: 60,
 	    Is_Invalid:false,
+			company:''
     }
   },
   watch:{
+		dataPhone:function(){
+			this.dataPhone=this.dataPhone.replace(/[^\d]/g,'');
+		},
 	  txt_code:function(){
 	  	this.txt_code=this.txt_code.replace(/[^\d]/g,'');
 	  }
@@ -141,34 +145,65 @@ export default {
   	  let that=this;
 	    that.codeState = false;
 	    that.codeState2=true;
+			if(that.dataPhone==''){
+				that.$toast("手机号码不能为空");
+				return false;
+			}else if(!(/^1[34578]\d{9}$/.test(that.mobile))){
+				that.$toast("请输入正确的手机号码");
+				return false;
+			}else{
+				Indicator.open({
+					text: '加载中...',
+					spinnerType: 'fading-circle'
+				});
+				that.axios({
+					method:'post',
+					url:api.getcode+'/'+that.dataPhone+'/3',
+					headers:headers(),
+					cache:false
+					}).then(function(res){
+						console.log(res);
+						Indicator.close();
+						if(res.data.code===10000){
+						 that.timingCode(); //倒计时
+						}else{
+						 that.$toast(res.data.msg);
+						 that.codeState=true;
+						 that.codeState2=false;
+						}
+					}).catch(error => {
+					 
+				});
+			}
+			
+  	},
+		getinfo(){
+			let that=this;
 			Indicator.open({
 				text: '加载中...',
 				spinnerType: 'fading-circle'
 			});
-      that.axios({
-  			method:'post',
-  			url:api.getcode+'/'+that.dataPhone+'/3',
-  			headers:headers("application/x-www-form-urlencoded"),
-//			data:"mobile="+that.dataPhone,
-  			cache:false
-  			}).then(function(res){
-  				console.log(res);
-  				Indicator.close();
+			that.axios({
+				method:'get',
+				url:api.getenterpriseInfo+'/'+that.enterpriseId,
+				headers:headers(),
+				cache:false
+				}).then(function(res){
+					console.log(res);
+					Indicator.close();
 					if(res.data.code===10000){
-				   that.timingCode(); //倒计时
-				  }else{
+					 that.company=res.data.data;
+					}else{
 					 that.$toast(res.data.msg);
-					 that.codeState=true;
-					 that.codeState2=false;
 					}
 				}).catch(error => {
-				 
+				
 			});
-  	},
+		}
   },
   mounted(){
   	let that=this;
-  	
+  	that.getinfo();
   }
 }
 </script>

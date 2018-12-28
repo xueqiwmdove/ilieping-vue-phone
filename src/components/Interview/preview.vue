@@ -108,7 +108,7 @@
 		name: 'preview',
 		data() {
 			return {
-				tableId:this.$route.query.tableId || 1,
+				tableId:this.$route.query.tableId,
 				registrationData:[],
 			};
 		},
@@ -140,7 +140,7 @@
         },
 		mounted(){
 			let that=this;
-			if(that.tableId!=""){
+			if(that.tableId!=null){
 				that.getData();
 			}
 		}

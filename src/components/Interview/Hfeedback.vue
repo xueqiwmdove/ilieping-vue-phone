@@ -57,13 +57,13 @@ export default {
 			let that=this;
 			that.isA=true;
 			that.isB=false;
-			that.interviewIntention=2;
+			that.interviewIntention=1;
 		},
 		tabsB(){
 			let that=this;
 			that.isA=false;
 			that.isB=true;
-			that.interviewIntention=1;
+			that.interviewIntention=2;
 		},
 		getinfo(){
 			let that=this;

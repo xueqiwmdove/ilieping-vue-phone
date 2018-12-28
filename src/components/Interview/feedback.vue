@@ -24,7 +24,8 @@
 			</div>
 			<div class="subheading">
 				<div class="f_l">面试登记表</div>
-				<div class="f_r" @click="previewClick(dataInfo.interviewFormTemplate)">预览表格</div>
+				<div class="f_r" v-if="dataInfo.interviewFormTemplate!=null" @click="previewClick(dataInfo.interviewFormTemplate)">预览表格</div>
+			  <div class="f_r" v-else>暂无登记表</div>
 			</div>
 			<div class="title_div">
 				<div class="title_l">面试登记表：</div>
