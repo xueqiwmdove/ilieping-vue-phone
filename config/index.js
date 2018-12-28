@@ -52,13 +52,16 @@ module.exports = {
   },
 
   build: {
+		env: {
+		NODE_ENV: '"production"'
+		},
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/a/login.html'),
+    index: path.resolve(__dirname, '../a/login.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist/a'),
-    assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+    assetsRoot: path.resolve(__dirname, '../a'),
+		assetsSubDirectory: 'static',
+		assetsPublicPath: './',//history
 
     /**
      * Source Maps

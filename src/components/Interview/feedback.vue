@@ -43,7 +43,7 @@
 				<div class="tabs_r" :class="{'IsActiveB': isB}" @click="tabsB">不满意</div>
 			</div>
 			<div class="textarea_div">
-				<textarea v-model="iinterviewFeedback" placeholder="例：如同意则填写您方便面试的时间让HR好安 排面试，如不同意则填写拒绝原因"></textarea> 
+				<textarea v-model="interviewFeedback" placeholder="例：如同意则填写您方便面试的时间让HR好安 排面试，如不同意则填写拒绝原因"></textarea> 
 			</div>
 		 </div>
 		<div class="btn_div">
@@ -70,7 +70,7 @@ export default {
 		 dataInfo:{},
 		 feedId:'',
 		 interviewSatisfaction:4,//1 不满意 2 一般 3 较满意  4 很满意
-		 iinterviewFeedback:''
+		 interviewFeedback:''
     }
   },
   watch:{
@@ -152,7 +152,7 @@ export default {
 				headers:headers(),
 				data:{
 					"id":that.feedId,
-					"iinterviewFeedback":that.iinterviewFeedback,
+					"interviewFeedback":that.interviewFeedback,
 					"interviewSatisfaction":that.interviewSatisfaction
 				},
 				cache:false

@@ -25,7 +25,9 @@ import preview from '@/components/Interview/preview' //预览面试登记表
 Vue.use(Router)
 
 export default new Router({
-  routes: [
+//   mode: 'history',//history
+//   base: './',//history，
+	routes: [
     {
       path: '/',
       name: 'login',
