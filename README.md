@@ -1,30 +1,50 @@
-# myvuephone
 
-> A Vue.js project
+# 1.编译环境安装
+> OS: Centos7.3
 
-## Build Setup
+```bash
+# 安装 npm
+yum install -y npm
+# 安装 cnpm
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+# 升级 cnpm
+cnpm install cnpm -g
 
-``` bash
-# install dependencies
-npm install
+```
+# 2.项目编译
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+```bash
+git clone git@192.168.2.152:ilieping-h5/ilieping-phone-vue.git
+cd ilieping-vue
+# 安装项目依赖
+cnpm install 
+# 编译
+cnpm run build 
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# 3.配置文件说明
+```bash
+./src/api/api.js    # 前端访问后端接口地址
+```
+
+# 4.项目部署
+
+在项目目录 `ilieping-phone-vue`下, 生成一个`dist/a`目录,
+
+    dist/
+    └── a
+        ├── login.html
+        └── static
+            ├── bitbug_favicon\ (1).ico
+            ├── css
+            ├── img
+            └── js
+
+通常`ilieping-phone-vue`项目 和 `ilieping-vue`项目部署到一个web服务器的站点下。
+    
+    dist 为发布目录。
+    dist/
+    ├── a
+    ├── index.html
+    └── static
+
