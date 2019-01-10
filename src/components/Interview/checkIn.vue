@@ -160,6 +160,9 @@ export default {
 					method:'post',
 					url:api.getcode+'/'+that.dataPhone+'/3',
 					headers:headers(),
+					data:{
+						enterpriseId:that.enterpriseId
+					},
 					cache:false
 					}).then(function(res){
 						console.log(res);
