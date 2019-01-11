@@ -5,8 +5,8 @@
 	  <div class="p_left">
 		<p class="left_div">  
 		<span class="nameSpan">{{registrationData.name}}</span>  
-		<span class="textspan" v-if="registrationData.sex==1">女</span>
-		<span class="textspan" v-if="registrationData.sex==2">男</span>
+		<span class="textspan" v-if="registrationData.sex==0">女</span>
+		<span class="textspan" v-if="registrationData.sex==1">男</span>
 		<span class="textspan">{{registrationData.nativePlace}}</span>  
 		</p>
 		<p>
@@ -52,10 +52,10 @@
 		<div class="wrokTitle"><i></i><div class="txt">工作经历</div></div>  
 		<div v-for="(items,index) in registrationData.workExperienceDTOList" :key="index">
 			<div class="companyDiv">
-				<div class="companyName">{{items.postName}}</div>
-				<div class="companyTime" v-if="items.startTime!=null && items.endTime!=null ">{{items.startTime}}~{{items.endTime}}</div>
+				<div class="companyName">{{items.companyName}}</div>
+				<div class="companyTime" v-if="items.employmentPeriodStartTime!=null && items.employmentPeriodEndTime!=null">{{items.employmentPeriodStartTime}}~{{items.employmentPeriodEndTime}}</div>
 			</div>
-			<div class="companySalary">{{items.salary}}</div>
+			<div class="workDuty" v-if="items.postName!=null">{{items.postName}}<span v-if="items.salary!=null">-{{items.salary}}</span></div>
 		</div>
 	  </div>
 	  
@@ -180,7 +180,7 @@
 .wrokdiv .wrokTitle .txt{font-size: 0.36rem; color:#303030; float: left; display: inline-block;}
 
 .companyDiv{ height: 0.6rem; line-height: 0.6rem;}
-.companyDiv .companyName{font-size: 0.36rem; color:#303030; float: left; display: inline-block;}
+.companyDiv .companyName{font-size: 0.36rem; color:#303030; float: left; display: inline-block; font-weight: bold;}
 .companyDiv .companyTime{font-size: 0.36rem; color:#999; float: right; display: inline-block;}
 
 .companySalary{font-size: 0.36rem; color:#303030;}
@@ -203,4 +203,5 @@
 .condiv{border-bottom: 1px solid #eee; padding: 0.2rem 0;}
 .condiv .conTitle{font-size: 0.34rem; color: #303030; text-align: left; line-height: 0.8rem;}
 .condiv .conData{font-size: 0.34rem; color: #999; text-align: left;}
+.workDuty{font-size: 0.34rem; color: #303030;text-align: left; line-height: 0.8rem;}
 </style>
