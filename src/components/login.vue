@@ -144,9 +144,11 @@ export default {
 			});
       that.axios({
   			method:'post',
-  			url:api.getcode+'/'+that.dataPhone+'/31',
+  			url:api.getcode+'/'+that.dataPhone+'/44',
   			headers:headers("application/x-www-form-urlencoded"),
-//			data:"mobile="+that.dataPhone,
+			data:{
+				agreementId:that.urlcode
+			},
   			cache:false
   			}).then(function(res){
   				console.log(res);
